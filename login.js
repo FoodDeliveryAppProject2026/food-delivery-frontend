@@ -12,14 +12,14 @@ const passwordError = document.getElementById('passwordError');
 
 
 // Check if email is valid by using regex
-function isEmailValid(email) {
+export function isEmailValid(email) {
   const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return pattern.test(email);
 }
 
 
 // Show error under a specific field
-function showFieldError(field, message) {
+export function showFieldError(field, message) {
   if (field === 'email') {
     emailError.textContent = message;
     emailError.classList.add('show');
@@ -34,7 +34,7 @@ function showFieldError(field, message) {
 
 
 //  Hide error under a specific field
-function hideFieldError(field) {
+export function hideFieldError(field) {
   if (field === 'email') {
     emailError.classList.remove('show');
     emailError.textContent = '';
