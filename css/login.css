@@ -51,7 +51,11 @@ body {
 /* The centered login card */
 .login-main {
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
+  border-radius: 20px;
+  padding: 40px;
+  margin: 60px auto;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
 }
 
 /* TITLE */

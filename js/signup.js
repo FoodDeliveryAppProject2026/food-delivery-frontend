@@ -124,8 +124,11 @@ function validate(email, password, confirmPassword, firstName, lastName) {
     valid = false;
   }
 
-  if (confirmPassword !== password) {
+  if (!confirmPassword) {
     showFieldError('confirmPassword', 'password does not match.');
+    valid = false;
+  } else if (confirmPassword !== password) {
+    showFieldError('password', 'Password must be at least 6 characters.');
     valid = false;
   }
 

@@ -78,8 +78,6 @@ function setLoading(isLoading) {
   continueBtn.classList.toggle("loading", isLoading);
 }
 
-window.setLoading = setLoading; // Remove this line after testing.
-
 eyeToggle.addEventListener("click", () => {
   const isHidden = passInput.type === "password";
   passInput.type = isHidden ? "text" : "password";

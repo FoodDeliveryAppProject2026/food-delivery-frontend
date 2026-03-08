@@ -50,14 +50,13 @@ body {
 
 /* The centered reset card */
 .forgotPass-main {
-  border: 1px solid #9a4d4d;
   width: 100%;
   max-width: 500px;
   border-radius: 20px;
   padding: 40px;
   height: 500px;
   margin: 60px auto;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08)
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
 }
 
 /* TITLE */
