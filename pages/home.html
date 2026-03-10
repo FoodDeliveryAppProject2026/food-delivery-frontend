@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HotMeal – Order Delivery Near You</title>
+  <link rel="stylesheet" href="../css/home.css" />
+  <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Patua+One&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="navbar-logo">
+        <img src="../images/HOTMEAL-23 - 1.svg" alt="App Logo" class="logo-img" />
+      </div>
+      <div class="nav-links" id="navLinks">
+        <a href="#categories">Browse</a>
+        <a href="#restaurants">Restaurants</a>
+        <a href="#cafes">Cafes</a>
+        <a href="#reviews">Reviews</a>
+      </div>
+      <div class="nav-actions">
+        <a href="../pages/login.html"><button class="btn-outline">Sign In</button></a>
+        <a href="../pages/signup.html"><button class="btn-solid">Sign Up</button></a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Fast. Fresh. Hot.</p>
+      <h1 class="hero-title">Order delivery<br/><span class="hero-highlight">near you</span></h1>
+      <div class="search-bar">
+        <input type="text" placeholder="Enter delivery address…" id="addressInput"/>
+        <button class="search-btn" onclick="handleSearch()">Search →</button>
+      </div>
+      <p class="hero-sub">Thousands of restaurants. Delivered in minutes.</p>
+    </div>
+    <div class="hero-scroll-hint">↓</div>
+  </section>
+
+  <!-- JOIN SECTION -->
+  <section class="join-section" id="join">
+    <div class="container">
+      <p class="section-eyebrow">Why HotMeal?</p>
+      <h2 class="section-title">Join <span class="brand-red">HotMeal</span> today</h2>
+      <p class="section-sub">Hot food delivered to your door. Fresh. Fast. Always on time.</p>
+      <div class="cta-buttons">
+        <button class="btn-solid large">Order Now</button>
+        <button class="btn-ghost large">Learn More</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="categories" id="categories">
+    <div class="container">
+      <div class="cards-grid">
+        <div class="card card-red reveal">
+          <div class="card-img card-img-red"></div>
+          <h3>Order Food</h3>
+          <p>Browse hundreds of restaurants and get food delivered to your door</p>
+          <a href="#" class="card-link">Explore →</a>
+        </div>
+        <div class="card card-orange reveal" style="--delay:.12s">
+          <div class="card-img card-img-orange"></div>
+          <h3>Grow Your Restaurant</h3>
+          <p>Partner with HotMeal and reach thousands of hungry customers</p>
+          <a href="#" class="card-link">Partner →</a>
+        </div>
+        <div class="card card-yellow reveal" style="--delay:.24s">
+          <div class="card-img card-img-yellow"></div>
+          <h3>Deliver With Us</h3>
+          <p>Set your own hours and earn money delivering food near you</p>
+          <a href="#" class="card-link">Apply →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESTAURANTS BANNER -->
+  <section class="banner banner-red" id="restaurants">
+    <div class="banner-content reveal">
+      <p class="section-eyebrow light">Top Picks</p>
+      <h2>Restaurants &amp; Dining</h2>
+      <p>From local favourites to top-rated restaurants. Pizza, burgers, sushi, gyros and more — all delivered from your door.</p>
+      <button class="btn-solid white">Order Now</button>
+    </div>
+  </section>
+
+  <!-- CAFES & GROCERIES -->
+  <section class="split-section" id="cafes">
+    <div class="container">
+      <div class="split-row reveal">
+        <div class="split-text">
+          <h2>Cafes &amp; Bakeries</h2>
+          <p>Your morning coffee, fresh pastries and desserts from the best cafes in your area delivered straight to you in minutes.</p>
+          <button class="btn-solid small">Browse Cafes →</button>
+        </div>
+        <div class="split-img split-img-orange"></div>
+      </div>
+      <div class="split-row reverse reveal" style="--delay:.1s">
+        <div class="split-img split-img-yellow"></div>
+        <div class="split-text">
+          <h2>Groceries &amp; Supermarkets</h2>
+          <p>Need more than just food? Order groceries, snacks and daily essentials from supermarkets near you without leaving home.</p>
+          <button class="btn-solid small">Shop Groceries →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="quote-section">
+    <div class="container">
+      <blockquote class="big-quote reveal">
+        "From your morning coffee to late night cravings —<br/><span class="brand-red">HotMeal</span> delivers it all."
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews-section" id="reviews">
+    <div class="container">
+      <p class="section-eyebrow">What people say</p>
+      <h2 class="section-title">Reviews</h2>
+      <div class="reviews-grid">
+        <div class="review-card reveal">
+          <p>"Found my favourite restaurant on HotMeal. Delivered in 35 minutes."</p>
+          <div class="reviewer">
+            <span class="avatar avatar-red">A</span>
+            <span>— Ameer, Giza</span>
+          </div>
+        </div>
+        <div class="review-card reveal" style="--delay:.1s">
+          <p>"I order my groceries and lunch at the same time. So convenient."</p>
+          <div class="reviewer">
+            <span class="avatar avatar-orange">M</span>
+            <span>— Mazen, Alexandria</span>
+          </div>
+        </div>
+        <div class="review-card reveal" style="--delay:.2s">
+          <p>"Late night cravings sorted. HotMeal never lets me down."</p>
+          <div class="reviewer">
+            <span class="avatar avatar-yellow">O</span>
+            <span>— Omar, Portsaid</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="logo-icon">🔥</span>
+          <span class="logo-text">HotMeal</span>
+        </div>
+        <p>Hot food delivered to your door, fresh pastries and daily essentials. Always fast, always on time.</p>
+        <a href="#" class="social-link">in</a>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Food</h4>
+          <a href="#">Restaurants</a>
+          <a href="#">Cafes</a>
+          <a href="#">Groceries</a>
+          <a href="#">Deals</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#">About Us</a>
+          <a href="#">Careers</a>
+          <a href="#">Blog</a>
+          <a href="#">Press</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="#">Help Center</a>
+          <a href="#">Contact Us</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 HotMeal. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/home.js"></script>
+</body>
+</html>
