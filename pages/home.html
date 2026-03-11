@@ -1,205 +1,313 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>HotMeal – Order Delivery Near You</title>
-  <link rel="stylesheet" href="../css/home.css" />
-  <link
-      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Patua+One&display=swap"
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hot Meal | Order delivery near you</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-</head>
-<body>
-
-  <!-- NAVBAR -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
+    <link rel="stylesheet" href="../css/home.css" />
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav id="navbar">
       <div class="navbar-logo">
-        <img src="../images/HOTMEAL-23 - 1.svg" alt="App Logo" class="logo-img" />
-      </div>
-      <div class="nav-links" id="navLinks">
-        <a href="#categories">Browse</a>
-        <a href="#restaurants">Restaurants</a>
-        <a href="#cafes">Cafes</a>
-        <a href="#reviews">Reviews</a>
+        <img
+          src="../images/HOTMEAL-23 - 1.svg"
+          alt="App Logo"
+          class="logo-img"
+        />
       </div>
       <div class="nav-actions">
-        <a href="../pages/login.html"><button class="btn-outline">Sign In</button></a>
-        <a href="../pages/signup.html"><button class="btn-solid">Sign Up</button></a>
+        <a href="#" class="btn-white">Sign In</a>
+        <a href="#" class="btn-black">Sign Up</a>
       </div>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
+    </nav>
 
-  <!-- HERO -->
-  <section class="hero" id="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <p class="hero-eyebrow">Fast. Fresh. Hot.</p>
-      <h1 class="hero-title">Order delivery<br/><span class="hero-highlight">near you</span></h1>
-      <div class="search-bar">
-        <input type="text" placeholder="Enter delivery address…" id="addressInput"/>
-        <button class="search-btn" onclick="handleSearch()">Search →</button>
+    <!-- HERO -->
+    <section class="hero">
+      <h1>Order delivery near you</h1>
+      <div class="hero-search">
+        <input
+          type="text"
+          id="addressInput"
+          placeholder="Enter delivery address"
+        />
+        <button id="searchBtn">Search →</button>
       </div>
-      <p class="hero-sub">Thousands of restaurants. Delivered in minutes.</p>
-    </div>
-    <div class="hero-scroll-hint">↓</div>
-  </section>
+    </section>
 
-  <!-- JOIN SECTION -->
-  <section class="join-section" id="join">
-    <div class="container">
-      <p class="section-eyebrow">Why HotMeal?</p>
-      <h2 class="section-title">Join <span class="brand-red">HotMeal</span> today</h2>
-      <p class="section-sub">Hot food delivered to your door. Fresh. Fast. Always on time.</p>
-      <div class="cta-buttons">
-        <button class="btn-solid large">Order Now</button>
-        <button class="btn-ghost large">Learn More</button>
+    <!-- JOIN -->
+    <section class="join" id="join">
+      <div></div>
+      <h2>Join <span>HotMeal</span> today</h2>
+      <p>Hot food delivered to your door. Fresh. Fast. Always on time.</p>
+      <div class="join-actions">
+        <a href="#" class="btn-black">Order Now</a>
+        <a href="#" class="btn-ghost">Learn More</a>
       </div>
-    </div>
-  </section>
 
-  <!-- CATEGORIES -->
-  <section class="categories" id="categories">
-    <div class="container">
-      <div class="cards-grid">
-        <div class="card card-red reveal">
-          <div class="card-img card-img-red"></div>
-          <h3>Order Food</h3>
-          <p>Browse hundreds of restaurants and get food delivered to your door</p>
-          <a href="#" class="card-link">Explore →</a>
+      <div class="features">
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-img">
+            <img
+              src="../images/food-order.jpg"
+              alt="App Logo"
+              class="logo-img"
+            />
+          </div>
+          <div class="feature-card-body">
+            <p>
+              Browse hundreds of restaurants and get hot food delivered straight
+              to your door in minutes.
+            </p>
+            <a href="#" class="btn-feature">Browse Food</a>
+          </div>
         </div>
-        <div class="card card-orange reveal" style="--delay:.12s">
-          <div class="card-img card-img-orange"></div>
-          <h3>Grow Your Restaurant</h3>
-          <p>Partner with HotMeal and reach thousands of hungry customers</p>
-          <a href="#" class="card-link">Partner →</a>
+        <div class="feature-card animate-on-scroll" data-delay="100">
+          <div class="feature-img">
+            <img
+              src="../images/resturant.jpg"
+              alt="App Logo"
+              class="logo-img"
+            />
+          </div>
+          <div class="feature-card-body">
+            <p>
+              Partner with HotMeal and reach thousands of hungry customers in
+              your area every day.
+            </p>
+            <a href="#" class="btn-feature">Grow Your Restaurant</a>
+          </div>
         </div>
-        <div class="card card-yellow reveal" style="--delay:.24s">
-          <div class="card-img card-img-yellow"></div>
-          <h3>Deliver With Us</h3>
-          <p>Set your own hours and earn money delivering food near you</p>
-          <a href="#" class="card-link">Apply →</a>
+        <div class="feature-card animate-on-scroll" data-delay="200">
+          <div class="feature-img">
+            <img src="../images/driver.jpg" alt="App Logo" class="logo-img" />
+          </div>
+          <div class="feature-card-body">
+            <p>
+              Set your own hours and earn money delivering food near you. Join
+              the rider community today.
+            </p>
+            <a href="#" class="btn-feature">Deliver With US</a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- RESTAURANTS BANNER -->
-  <section class="banner banner-red" id="restaurants">
-    <div class="banner-content reveal">
-      <p class="section-eyebrow light">Top Picks</p>
-      <h2>Restaurants &amp; Dining</h2>
-      <p>From local favourites to top-rated restaurants. Pizza, burgers, sushi, gyros and more — all delivered from your door.</p>
-      <button class="btn-solid white">Order Now</button>
-    </div>
-  </section>
+    <!-- RESTAURANTS BANNER -->
+    <section class="restaurants-banner">
+      <div class="banner-bg-img">
+        <img
+          src="../images/resturant-banner.jpg"
+          alt="Restaurants"
+          class="restaurant-img"
+        />
+      </div>
+      <div class="banner-overlay"></div>
+      <div class="banner-content animate-on-scroll">
+        <h2>Restaurants &amp; Dining</h2>
+        <p>
+          From local favorites to top-rated restaurants. Pizza, burgers, sushi,
+          grills and more — all delivered fresh to your door.
+        </p>
+        <a href="#" class="btn-white">Find Restaurants</a>
+      </div>
+    </section>
 
-  <!-- CAFES & GROCERIES -->
-  <section class="split-section" id="cafes">
-    <div class="container">
-      <div class="split-row reveal">
-        <div class="split-text">
+    <!-- CATEGORIES -->
+    <section class="categories">
+      <div class="category-row animate-on-scroll">
+        <div class="category-text">
           <h2>Cafes &amp; Bakeries</h2>
-          <p>Your morning coffee, fresh pastries and desserts from the best cafes in your area delivered straight to you in minutes.</p>
-          <button class="btn-solid small">Browse Cafes →</button>
+          <p>
+            Your morning coffee, fresh pastries and desserts from the best cafés
+            in your area delivered straight to you in minutes.
+          </p>
+          <a href="#" class="btn-sm-black">Find Cafés →</a>
         </div>
-        <div class="split-img split-img-orange"></div>
+        <div class="category-img">
+          <img
+            src="../images/bakeries.jpg"
+            alt="category Logo"
+            class="category-img"
+          />
+        </div>
       </div>
-      <div class="split-row reverse reveal" style="--delay:.1s">
-        <div class="split-img split-img-yellow"></div>
-        <div class="split-text">
+
+      <div class="category-row reverse animate-on-scroll">
+        <div class="category-text">
           <h2>Groceries &amp; Supermarkets</h2>
-          <p>Need more than just food? Order groceries, snacks and daily essentials from supermarkets near you without leaving home.</p>
-          <button class="btn-solid small">Shop Groceries →</button>
+          <p>
+            Need more than just food? Order groceries, snacks and daily
+            essentials from supermarkets near you without leaving home.
+          </p>
+          <a href="#" class="btn-sm-black">Find Groceries →</a>
+        </div>
+        <div class="category-img">
+          <img
+            src="../images/groceries.jpg"
+            alt="category Logo"
+            class="category-img"
+          />
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- QUOTE -->
-  <section class="quote-section">
-    <div class="container">
-      <blockquote class="big-quote reveal">
-        "From your morning coffee to late night cravings —<br/><span class="brand-red">HotMeal</span> delivers it all."
+    <!-- QUOTE -->
+    <section class="quote-section animate-on-scroll">
+      <blockquote>
+        "From your morning coffee to late night cravings — HotMeal delivers it
+        all."
       </blockquote>
-    </div>
-  </section>
+    </section>
 
-  <!-- REVIEWS -->
-  <section class="reviews-section" id="reviews">
-    <div class="container">
-      <p class="section-eyebrow">What people say</p>
-      <h2 class="section-title">Reviews</h2>
-      <div class="reviews-grid">
-        <div class="review-card reveal">
-          <p>"Found my favourite restaurant on HotMeal. Delivered in 35 minutes."</p>
-          <div class="reviewer">
-            <span class="avatar avatar-red">A</span>
-            <span>— Ameer, Giza</span>
+    <!-- REVIEWS -->
+    <section class="reviews" id="reviews">
+      <h2>Reviews</h2>
+      <p class="reviews-subtitle">Here's what people are saying</p>
+      <div class="reviews-grid" id="reviewsGrid"></div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <!-- ROW 1: Logo + Social icons -->
+        <div class="footer-top-row">
+          <div class="footer-logo-block">
+            <img
+              src="../images/HOTMEAL-23 - 1.svg"
+              alt="App Logo"
+              class="logo-img"
+            />
+          </div>
+          <div class="footer-social">
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                />
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Twitter / X">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                />
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r="1"
+                  fill="currentColor"
+                  stroke="none"
+                />
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="YouTube">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58a2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58zM9.75 15.02V8.98L15.5 12z"
+                />
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Newsletter">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <polyline points="2,4 12,13 22,4" />
+              </svg>
+            </a>
           </div>
         </div>
-        <div class="review-card reveal" style="--delay:.1s">
-          <p>"I order my groceries and lunch at the same time. So convenient."</p>
-          <div class="reviewer">
-            <span class="avatar avatar-orange">M</span>
-            <span>— Mazen, Alexandria</span>
+
+        <!-- DIVIDER -->
+        <div class="footer-divider"></div>
+
+        <div class="footer-columns">
+          <!-- COL 1: Join Us -->
+          <div class="footer-col">
+            <h4>Join Us</h4>
+            <ul>
+              <li><a href="#">Order as a Customer</a></li>
+              <li><a href="#">Add Your Restaurant</a></li>
+              <li><a href="#">Become a Rider</a></li>
+              <li><a href="#">How It Works</a></li>
+              <li><a href="#">Pricing & Plans</a></li>
+            </ul>
+          </div>
+
+          <!-- COL 2: About -->
+          <div class="footer-col">
+            <h4>About</h4>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Press & Media</a></li>
+              <li><a href="#">Careers</a></li>
+            </ul>
+          </div>
+          <!-- COL 3: Support -->
+          <div class="footer-col">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Track Your Order</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Use</a></li>
+            </ul>
           </div>
         </div>
-        <div class="review-card reveal" style="--delay:.2s">
-          <p>"Late night cravings sorted. HotMeal never lets me down."</p>
-          <div class="reviewer">
-            <span class="avatar avatar-yellow">O</span>
-            <span>— Omar, Portsaid</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-brand">
-        <div class="footer-logo">
-          <span class="logo-icon">🔥</span>
-          <span class="logo-text">HotMeal</span>
-        </div>
-        <p>Hot food delivered to your door, fresh pastries and daily essentials. Always fast, always on time.</p>
-        <a href="#" class="social-link">in</a>
-      </div>
-      <div class="footer-links">
-        <div class="footer-col">
-          <h4>Food</h4>
-          <a href="#">Restaurants</a>
-          <a href="#">Cafes</a>
-          <a href="#">Groceries</a>
-          <a href="#">Deals</a>
-        </div>
-        <div class="footer-col">
-          <h4>Company</h4>
-          <a href="#">About Us</a>
-          <a href="#">Careers</a>
-          <a href="#">Blog</a>
-          <a href="#">Press</a>
-        </div>
-        <div class="footer-col">
-          <h4>Support</h4>
-          <a href="#">Help Center</a>
-          <a href="#">Contact Us</a>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms</a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2025 HotMeal. All rights reserved.</p>
-    </div>
-  </footer>
+        <div class="footer-divider"></div>
 
-  <script src="../js/home.js"></script>
-</body>
+        <!-- ROW 4: Copyright -->
+        <div class="footer-copyright">
+          © 2026 HOTMEAL, LLC. ALL RIGHTS RESERVED
+        </div>
+      </div>
+    </footer>
+
+    <script src="../js/home.js"></script>
+  </body>
 </html>
