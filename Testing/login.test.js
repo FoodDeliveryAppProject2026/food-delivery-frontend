@@ -5,16 +5,16 @@
 const fs = require('fs');
 const path = require('path');
 
-const html = fs.readFileSync(path.resolve(__dirname, '../login.html'), 'utf8');
+const html = fs.readFileSync(path.resolve(__dirname, '../pages/login.html'), 'utf8');
 
-
+const setLoading = require('../js/user-register.js');
 describe('Login Form Test', () => {
 	beforeEach(() => {
 		document.documentElement.innerHTML = html.toString();
 		jest.resetModules();
 		require('../js/login.js');
 	});
-
+	
 	test.each([["exmaple123@outlook.com","asdasd_21332"], ["example2@gmail.com","321345"]], (email, password) => {
 		
 		const continueButton = document.getElementById('continueBtn');
@@ -184,7 +184,7 @@ describe('Login Form Test', () => {
 
 		const forgetPass = document.querySelector(".forgot-link");
 
-		expect(forgetPass.getAttribute("href")).toBe("forgotpass.html");
+		expect(forgetPass.getAttribute("href")).toBe("forgot-password.html");
 
 	});
 
