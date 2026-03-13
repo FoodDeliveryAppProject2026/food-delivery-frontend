@@ -1,14 +1,21 @@
+// Form
 const loginForm = document.getElementById("loginForm");
+
+// Inputs
 const emailInput = document.getElementById("email");
 const passInput = document.getElementById("password");
+
+// Inputs Errors
+const emailError = document.getElementById("emailError");
+const passwordError = document.getElementById("passwordError");
+
+// Btn
 const continueBtn = document.getElementById("continueBtn");
+const googleBtn = document.getElementById("googleBtn");
+const remember = document.getElementById("remember");
 const btnLabel = document.getElementById("btnLabel");
 const btnSpinner = document.getElementById("btnSpinner");
 const eyeToggle = document.getElementById("eyeToggle");
-const remember = document.getElementById("remember");
-const googleBtn = document.getElementById("googleBtn");
-const emailError = document.getElementById("emailError");
-const passwordError = document.getElementById("passwordError");
 
 // Check if email is valid by using regex
 function isEmailValid(email) {

@@ -8,47 +8,49 @@
       href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Patua+One&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../css/signup.css" />
+    <link rel="stylesheet" href="../css/vendor-register.css" />
   </head>
   <body>
     <nav class="navbar">
       <div class="navbar-logo">
-        <img src="../images/HOTMEAL-23 - 1.svg" alt="App Logo" class="logo-img" />
+        <img
+          src="../images/HOTMEAL-23 - 1.svg"
+          alt="App Logo"
+          class="logo-img"
+        />
       </div>
     </nav>
     <main class="main">
       <div class="signup-main">
         <h1 class="page-title">Sign Up</h1>
 
-        <form id="signupForm" novalidate>
-
+        <form id="registerForm" novalidate>
           <!-- Name field -->
           <div class="field-group name-row">
-
-            <!-- first name -->         
-            <div class="name">
+            <!-- first name -->
+            <div>
               <input
-              type="text"
-              id="firstName"
-              class="input-field"
-              placeholder="First Name"
-              autocomplete="firstName"
-              required
-            />
-            <p class="field-error" id="firstNameError"></p>
+                type="text"
+                id="firstName"
+                class="input-field"
+                placeholder="First Name"
+                autocomplete="firstName"
+                required
+              />
+              <p class="field-error" id="firstNameError"></p>
             </div>
 
             <!-- last name -->
-            <div class="name">
+            <div>
               <input
-              type="text"
-              id="lastName"
-              class="input-field"
-              placeholder="Last Name"
-              autocomplete="lastName"
-              required
-            />
-            <p class="field-error" id="lastNameError"></p>
+                type="text"
+                id="lastName"
+                class="input-field"
+                placeholder="Last Name"
+                autocomplete="lastName"
+                required
+              />
+              <p class="field-error" id="lastNameError"></p>
             </div>
           </div>
 
@@ -58,11 +60,24 @@
               type="email"
               id="email"
               class="input-field"
-              placeholder="Enter email"
+              placeholder="Email"
               autocomplete="email"
               required
             />
             <p class="field-error" id="emailError"></p>
+          </div>
+
+          <!--Phone Number field -->
+          <div class="field-group">
+            <input
+              type="tel"
+              id="phone"
+              class="input-field"
+              placeholder="Phone Number"
+              autocomplete="tel"
+              required
+            />
+            <p class="field-error" id="phoneError"></p>
           </div>
 
           <!-- Password field -->
@@ -72,7 +87,7 @@
                 type="password"
                 id="password"
                 class="input-field"
-                placeholder="Enter password"
+                placeholder="Password"
                 autocomplete="current-password"
                 required
               />
@@ -111,6 +126,58 @@
               </button>
             </div>
             <p class="field-error" id="confirmPasswordError"></p>
+          </div>
+
+          <!--Address field -->
+          <div class="field-group">
+            <input
+              type="text"
+              id="address"
+              class="input-field"
+              placeholder="Address"
+              autocomplete="name"
+              required
+            />
+            <p class="field-error" id="addressError"></p>
+          </div>
+
+          <!--Store Name field -->
+          <div class="field-group">
+            <input
+              type="text"
+              id="storeName"
+              class="input-field"
+              placeholder="Store Name"
+              autocomplete="name"
+              required
+            />
+            <p class="field-error" id="storeNameError"></p>
+          </div>
+
+          <!--Business Type field -->
+          <div class="field-group">
+            <input
+              type="text"
+              id="businessType"
+              class="input-field"
+              placeholder="Business Type"
+              autocomplete="name"
+              required
+            />
+            <p class="field-error" id="businessTypeError"></p>
+          </div>
+
+          <!--Cuisine Type field -->
+          <div class="field-group">
+            <input
+              type="text"
+              id="cuisineType"
+              class="input-field"
+              placeholder="Cuisine Type"
+              autocomplete="name"
+              required
+            />
+            <p class="field-error" id="cuisineTypeError"></p>
           </div>
 
           <!-- Submit -->
@@ -160,6 +227,6 @@
         </p>
       </div>
     </main>
-    <script src="../js/signup.js"></script>
+    <script src="../js/vendor-register.js"></script>
   </body>
 </html>

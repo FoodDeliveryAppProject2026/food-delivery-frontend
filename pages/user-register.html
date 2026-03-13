@@ -8,7 +8,7 @@
       href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Patua+One&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="../css/user-register.css" />
   </head>
   <body>
     <nav class="navbar">
@@ -21,21 +21,63 @@
       </div>
     </nav>
     <main class="main">
-      <div class="login-main">
-        <h1 class="page-title">Sign In</h1>
+      <div class="signup-main">
+        <h1 class="page-title">Sign Up</h1>
 
-        <form id="loginForm" novalidate>
+        <form id="registerForm" novalidate>
+          <!-- Name field -->
+          <div class="field-group name-row">
+            <!-- first name -->
+            <div>
+              <input
+                type="text"
+                id="firstName"
+                class="input-field"
+                placeholder="First Name"
+                autocomplete="firstName"
+                required
+              />
+              <p class="field-error" id="firstNameError"></p>
+            </div>
+
+            <!-- last name -->
+            <div>
+              <input
+                type="text"
+                id="lastName"
+                class="input-field"
+                placeholder="Last Name"
+                autocomplete="lastName"
+                required
+              />
+              <p class="field-error" id="lastNameError"></p>
+            </div>
+          </div>
+
           <!-- Email field -->
           <div class="field-group">
             <input
               type="email"
               id="email"
               class="input-field"
-              placeholder="Enter email"
+              placeholder="Email"
               autocomplete="email"
               required
             />
             <p class="field-error" id="emailError"></p>
+          </div>
+
+          <!--Phone Number field -->
+          <div class="field-group">
+            <input
+              type="tel"
+              id="phone"
+              class="input-field"
+              placeholder="Phone Number"
+              autocomplete="tel"
+              required
+            />
+            <p class="field-error" id="phoneError"></p>
           </div>
 
           <!-- Password field -->
@@ -45,7 +87,7 @@
                 type="password"
                 id="password"
                 class="input-field"
-                placeholder="Enter password"
+                placeholder="Password"
                 autocomplete="current-password"
                 required
               />
@@ -62,15 +104,28 @@
             <p class="field-error" id="passwordError"></p>
           </div>
 
-          <div class="form-row">
-            <label class="remember-label">
-              <input type="checkbox" id="remember" class="remember-check" />
-              <span class="check-custom"></span>
-              <span class="remember-text">Remember Me</span>
-            </label>
-            <a href="forgot-password.html" class="forgot-link"
-              >Forget Password</a
-            >
+          <!--Confirm Password field -->
+          <div class="field-group">
+            <div class="pass-input">
+              <input
+                type="password"
+                id="confirmPassword"
+                class="input-field"
+                placeholder="Confirm password"
+                autocomplete="new-password"
+                required
+              />
+              <button
+                type="button"
+                class="eye-toggle"
+                id="confirmEyeToggle"
+                title="Show/hide password"
+              >
+                <img src="../images/show.png" alt="show" />
+                <img src="../images/hide.png" alt="hide" />
+              </button>
+            </div>
+            <p class="field-error" id="confirmPasswordError"></p>
           </div>
 
           <!-- Submit -->
@@ -114,12 +169,12 @@
         </button>
 
         <p class="signup-prompt">
-          <a href="/pages/user-register.html" class="signup-link"
-            >"New To Hot Meal? Sign Up →"</a
+          <a href="login.html" class="signup-link"
+            >"Already have an account? Sign in →"</a
           >
         </p>
       </div>
     </main>
-    <script src="../js/login.js"></script>
+    <script src="../js/user-register.js"></script>
   </body>
 </html>
