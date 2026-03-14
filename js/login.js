@@ -16,6 +16,7 @@ const remember = document.getElementById("remember");
 const btnLabel = document.getElementById("btnLabel");
 const btnSpinner = document.getElementById("btnSpinner");
 const eyeToggle = document.getElementById("eyeToggle");
+
 // Check if email is valid by using regex
 function isEmailValid(email) {
   const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -59,7 +60,7 @@ function hideAllErrors() {
 // Returns true if everything is valid
 function validate(email, password) {
   let valid = true;
-  
+
   if (!email) {
     showFieldError("email", "Please enter your email address.");
     valid = false;
@@ -67,7 +68,7 @@ function validate(email, password) {
     showFieldError("email", "Please enter a valid email address.");
     valid = false;
   }
-  
+
   if (!password) {
     showFieldError("password", "Please enter your password.");
     valid = false;
@@ -75,7 +76,7 @@ function validate(email, password) {
     showFieldError("password", "Password must be at least 6 characters.");
     valid = false;
   }
-  
+
   return valid;
 }
 
@@ -83,7 +84,6 @@ function setLoading(isLoading) {
   continueBtn.disabled = isLoading;
   continueBtn.classList.toggle("loading", isLoading);
 }
-module.exports = {setLoading};
 
 eyeToggle.addEventListener("click", () => {
   const isHidden = passInput.type === "password";
