@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HotMeal – Hungry? Discover the best in town.</title>
+  <link rel="stylesheet" href="../css/restaurants.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="navbar-logo">
+        <img
+          src="../images/HOTMEAL-23 - 1.svg"
+          alt="App Logo"
+          class="logo-img"
+        />
+      </div>
+  <div class="nav-links">
+    <a href="../pages/home.html" class="nav-link" data-page="explore">Home</a>
+    <a href="#" class="nav-link" data-page="orders">Dashboard</a>
+    <a href="cart.html" class="cart-icon-link" title="Go to Cart">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span class="cart-badge" id="cartBadge">0</span>
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Hungry? Discover the best in town.</h1>
+  <div class="search-bar">
+    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    <input type="text" id="searchInput" placeholder="Enter your delivery address or restaurant name" />
+    <button class="btn-search" id="searchBtn">Search</button>
+  </div>
+</section>
+
+<!-- POPULAR CUISINES -->
+<section class="section cuisines-section">
+  <div class="section-header">
+    <h2>Popular Cuisines</h2>
+    <a href="#" class="view-all" id="viewAllCuisines">View all <i class="fa-solid fa-chevron-right"></i></a>
+  </div>
+  <div class="cuisines-grid" id="cuisinesGrid">
+    <div class="cuisine-chip active" data-cuisine="all">
+      <div class="cuisine-icon"><i class="fa-solid fa-utensils"></i></div>
+      <span>All</span>
+    </div>
+    <div class="cuisine-chip" data-cuisine="pizza">
+      <div class="cuisine-icon"><i class="fa-solid fa-pizza-slice"></i></div>
+      <span>Pizza</span>
+    </div>
+    <div class="cuisine-chip" data-cuisine="burgers">
+      <div class="cuisine-icon"><i class="fa-solid fa-burger"></i></div>
+      <span>Burgers</span>
+    </div>
+    <div class="cuisine-chip" data-cuisine="sushi">
+      <div class="cuisine-icon"><i class="fa-solid fa-fish"></i></div>
+      <span>Sushi</span>
+    </div>
+    <div class="cuisine-chip" data-cuisine="vegan">
+      <div class="cuisine-icon"><i class="fa-solid fa-leaf"></i></div>
+      <span>Vegan</span>
+    </div>
+    <div class="cuisine-chip" data-cuisine="desserts">
+      <div class="cuisine-icon"><i class="fa-solid fa-cake-candles"></i></div>
+      <span>Desserts</span>
+    </div>
+    <div class="cuisine-chip" data-cuisine="noodles">
+      <div class="cuisine-icon"><i class="fa-solid fa-bowl-food"></i></div>
+      <span>Noodles</span>
+    </div>
+    <div class="cuisine-chip" data-cuisine="coffee">
+      <div class="cuisine-icon"><i class="fa-solid fa-mug-hot"></i></div>
+      <span>Coffee</span>
+    </div>
+  </div>
+</section>
+
+<!-- TOP RATED RESTAURANTS -->
+<section class="section" id="topRatedSection">
+  <div class="section-header">
+    <h2>Top Rated Restaurants</h2>
+  </div>
+  <div class="top-restaurants-grid" id="topRestaurantsGrid">
+    <!-- Injected by JS -->
+  </div>
+</section>
+
+<!-- ALL RESTAURANTS -->
+<section class="section" id="allRestaurantsSection">
+  <div class="section-header">
+    <h2>All Restaurants</h2>
+    <div class="filter-sort">
+      <button class="btn-filter" id="filterBtn"><i class="fa-solid fa-sliders"></i> Filter</button>
+      <div class="sort-dropdown">
+        <select id="sortSelect">
+          <option value="relevance">Sort by: Relevance</option>
+          <option value="rating">Sort by: Rating</option>
+          <option value="time">Sort by: Fastest</option>
+          <option value="delivery">Sort by: Delivery Fee</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filter Panel -->
+  <div class="filter-panel hidden" id="filterPanel">
+    <div class="filter-group">
+      <label>Max Delivery Time</label>
+      <div class="filter-options">
+        <button class="filter-option active" data-filter="time" data-value="all">Any</button>
+        <button class="filter-option" data-filter="time" data-value="20">Under 20 min</button>
+        <button class="filter-option" data-filter="time" data-value="30">Under 30 min</button>
+        <button class="filter-option" data-filter="time" data-value="45">Under 45 min</button>
+      </div>
+    </div>
+    <div class="filter-group">
+      <label>Delivery Fee</label>
+      <div class="filter-options">
+        <button class="filter-option active" data-filter="fee" data-value="all">Any</button>
+        <button class="filter-option" data-filter="fee" data-value="free">Free Only</button>
+        <button class="filter-option" data-filter="fee" data-value="low">Under $2</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="all-restaurants-grid" id="allRestaurantsGrid">
+    <!-- Injected by JS -->
+  </div>
+
+  <div class="show-more-wrap">
+    <button class="btn-show-more" id="showMoreBtn">Show More Restaurants</button>
+  </div>
+</section>
+
+<!-- NO RESULTS -->
+<div class="no-results hidden" id="noResults">
+  <i class="fa-solid fa-plate-wheat"></i>
+  <p>No restaurants found. Try a different search or filter.</p>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+       <div class="navbar-logo">
+        <img
+          src="../images/HOTMEAL-23 - 1.svg"
+          alt="App Logo"
+          class="logo-img"
+        />
+      </div>
+      <p>High-speed delivery for the modern urban appetite. Bold flavors, fast action.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="#">Restaurants</a>
+      <a href="#">Cuisines</a>
+      <a href="#">Deals</a>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <a href="#">Help Center</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+    <div class="footer-col">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="#"><i class="fa-solid fa-share-nodes"></i></a>
+        <a href="#"><i class="fa-solid fa-globe"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 HotMeal Velocity. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- TOAST NOTIFICATION -->
+<div class="toast hidden" id="toast"></div>
+
+<script src="../js/restaurants.js"></script>
+</body>
+</html>
