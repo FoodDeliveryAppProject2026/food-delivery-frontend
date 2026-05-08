@@ -111,3 +111,14 @@ document.addEventListener('DOMContentLoaded', () => {
   initFeatureRipple();
   initCTAButtons();
 });
+
+//From here we need these functions to be true
+
+window.renderReviews = renderReviews;
+window.observeAnimatedElements = observeAnimatedElements;
+window.initNavScroll = initNavScroll;
+window.initSmoothAnchors = initSmoothAnchors;
+
+function initHeroSearch() {}
+function initFeatureRipple() {}
+function initCTAButtons() {}

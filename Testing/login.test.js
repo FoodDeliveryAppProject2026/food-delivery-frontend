@@ -7,7 +7,7 @@ const path = require('path');
 
 const html = fs.readFileSync(path.resolve(__dirname, '../pages/login.html'), 'utf8');
 
-const setLoading = require('../js/user-register.js');
+const setLoading = require('../js/login.js');
 describe('Login Form Test', () => {
 	beforeEach(() => {
 		document.documentElement.innerHTML = html.toString();
