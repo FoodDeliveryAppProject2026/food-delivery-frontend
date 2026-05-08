@@ -384,4 +384,12 @@ function showToast(msg) {
 }
 
 // ===================== INIT =====================
+//ADDED THESE LINES CHECK IT
 renderAll();
+
+module.exports = {
+  renderTopRestaurants,
+  renderAllRestaurants,
+  getFilteredRestaurants,
+  showToast,
+};

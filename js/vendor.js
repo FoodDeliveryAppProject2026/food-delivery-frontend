@@ -348,3 +348,12 @@ function showToast(msg) {
 
 // ===== INIT =====
 renderDishes();
+// ADDED THESE FUNCTIONS TO RUN THE TEST
+global.addToCart = addToCart;
+global.changeQty = changeQty;
+global.updateCartUI = updateCartUI;
+global.openCart = openCart;
+global.closeCartFn = closeCartFn;
+global.renderDishes = renderDishes;
+global.showToast = showToast;
+global.toggleFilter = toggleFilter;
