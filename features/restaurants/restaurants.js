@@ -12,7 +12,8 @@ const restaurants = [
     deliveryCost: 0,
     featured: true,
     topPick: false,
-    image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80",
   },
   {
     id: 2,
@@ -25,7 +26,8 @@ const restaurants = [
     deliveryCost: 0,
     featured: true,
     topPick: false,
-    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80",
   },
   {
     id: 3,
@@ -38,7 +40,8 @@ const restaurants = [
     deliveryCost: 0,
     featured: true,
     topPick: false,
-    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80",
   },
   // All restaurants
   {
@@ -52,7 +55,8 @@ const restaurants = [
     deliveryCost: 1.99,
     featured: false,
     topPick: true,
-    image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=400&q=80",
+    image:
+      "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=400&q=80",
   },
   {
     id: 5,
@@ -65,7 +69,8 @@ const restaurants = [
     deliveryCost: 0,
     featured: false,
     topPick: true,
-    image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&q=80",
+    image:
+      "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&q=80",
   },
   {
     id: 6,
@@ -78,7 +83,8 @@ const restaurants = [
     deliveryCost: 0.99,
     featured: false,
     topPick: false,
-    image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400&q=80",
+    image:
+      "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400&q=80",
   },
   {
     id: 7,
@@ -91,7 +97,8 @@ const restaurants = [
     deliveryCost: 0,
     featured: false,
     topPick: false,
-    image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80",
+    image:
+      "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80",
   },
   {
     id: 8,
@@ -104,7 +111,8 @@ const restaurants = [
     deliveryCost: 1.49,
     featured: false,
     topPick: false,
-    image: "https://images.unsplash.com/photo-1550317138-10000687a72b?w=400&q=80",
+    image:
+      "https://images.unsplash.com/photo-1550317138-10000687a72b?w=400&q=80",
   },
   {
     id: 9,
@@ -117,7 +125,8 @@ const restaurants = [
     deliveryCost: 0,
     featured: false,
     topPick: false,
-    image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400&q=80",
+    image:
+      "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400&q=80",
   },
   {
     id: 10,
@@ -130,7 +139,8 @@ const restaurants = [
     deliveryCost: 0.99,
     featured: false,
     topPick: true,
-    image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&q=80",
+    image:
+      "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&q=80",
   },
 ];
 
@@ -154,8 +164,10 @@ function getTimeRange(t) {
 // ===================== RENDER: TOP RESTAURANTS =====================
 function renderTopRestaurants() {
   const grid = document.getElementById("topRestaurantsGrid");
-  const featured = restaurants.filter(r => r.featured);
-  grid.innerHTML = featured.map(r => `
+  const featured = restaurants.filter((r) => r.featured);
+  grid.innerHTML = featured
+    .map(
+      (r) => `
     <a class="restaurant-card" href="restaurant.html" data-id="${r.id}">
       <div class="card-image">
         <img src="${r.image}" alt="${r.name}" loading="lazy"/>
@@ -173,44 +185,48 @@ function renderTopRestaurants() {
         </div>
       </div>
     </a>
-  `).join("");
+  `,
+    )
+    .join("");
 }
 
 // ===================== RENDER: ALL RESTAURANTS =====================
 function getFilteredRestaurants() {
-  let list = restaurants.filter(r => !r.featured);
+  let list = restaurants.filter((r) => !r.featured);
 
   // Cuisine filter
   if (activeCuisine !== "all") {
-    list = list.filter(r => r.cuisines.includes(activeCuisine));
+    list = list.filter((r) => r.cuisines.includes(activeCuisine));
   }
 
   // Search filter
   if (searchQuery.trim()) {
     const q = searchQuery.toLowerCase();
-    list = list.filter(r =>
-      r.name.toLowerCase().includes(q) ||
-      r.tags.some(t => t.toLowerCase().includes(q)) ||
-      r.cuisines.some(c => c.includes(q))
+    list = list.filter(
+      (r) =>
+        r.name.toLowerCase().includes(q) ||
+        r.tags.some((t) => t.toLowerCase().includes(q)) ||
+        r.cuisines.some((c) => c.includes(q)),
     );
   }
 
   // Time filter
   if (activeTimeFilter !== "all") {
-    list = list.filter(r => r.time <= parseInt(activeTimeFilter));
+    list = list.filter((r) => r.time <= parseInt(activeTimeFilter));
   }
 
   // Fee filter
   if (activeFeeFilter === "free") {
-    list = list.filter(r => r.deliveryCost === 0);
+    list = list.filter((r) => r.deliveryCost === 0);
   } else if (activeFeeFilter === "low") {
-    list = list.filter(r => r.deliveryCost < 2);
+    list = list.filter((r) => r.deliveryCost < 2);
   }
 
   // Sort
   if (sortOrder === "rating") list.sort((a, b) => b.rating - a.rating);
   else if (sortOrder === "time") list.sort((a, b) => a.time - b.time);
-  else if (sortOrder === "delivery") list.sort((a, b) => a.deliveryCost - b.deliveryCost);
+  else if (sortOrder === "delivery")
+    list.sort((a, b) => a.deliveryCost - b.deliveryCost);
 
   return list;
 }
@@ -231,7 +247,9 @@ function renderAllRestaurants() {
   noResults.classList.add("hidden");
   const visible = list.slice(0, visibleCount);
 
-  grid.innerHTML = visible.map(r => `
+  grid.innerHTML = visible
+    .map(
+      (r) => `
     <a class="list-card" href="restaurant.html" data-id="${r.id}">
       <div class="list-card-image">
         <img src="${r.image}" alt="${r.name}" loading="lazy"/>
@@ -246,7 +264,7 @@ function renderAllRestaurants() {
           <div class="list-card-tags">${r.tags.join(" • ")}</div>
         </div>
         <div class="list-card-bottom">
-          <div class="list-meta-item ${r.deliveryCost === 0 ? 'free-delivery' : ''}">
+          <div class="list-meta-item ${r.deliveryCost === 0 ? "free-delivery" : ""}">
             <i class="fa-solid fa-motorcycle"></i>
             ${getDeliveryLabel(r)}
           </div>
@@ -257,7 +275,9 @@ function renderAllRestaurants() {
         </div>
       </div>
     </a>
-  `).join("");
+  `,
+    )
+    .join("");
 
   // Show/hide "Show More" button
   if (visibleCount >= list.length) {
@@ -274,15 +294,19 @@ function renderAll() {
 }
 
 // ===================== CUISINE FILTER =====================
-document.querySelectorAll(".cuisine-chip").forEach(chip => {
+document.querySelectorAll(".cuisine-chip").forEach((chip) => {
   chip.addEventListener("click", () => {
-    document.querySelectorAll(".cuisine-chip").forEach(c => c.classList.remove("active"));
+    document
+      .querySelectorAll(".cuisine-chip")
+      .forEach((c) => c.classList.remove("active"));
     chip.classList.add("active");
     activeCuisine = chip.dataset.cuisine;
     visibleCount = PAGE_SIZE;
     renderAllRestaurants();
     // Scroll to all restaurants
-    document.getElementById("allRestaurantsSection").scrollIntoView({ behavior: "smooth", block: "start" });
+    document
+      .getElementById("allRestaurantsSection")
+      .scrollIntoView({ behavior: "smooth", block: "start" });
   });
 });
 
@@ -298,7 +322,9 @@ document.getElementById("searchBtn").addEventListener("click", () => {
   searchQuery = document.getElementById("searchInput").value;
   visibleCount = PAGE_SIZE;
   renderAllRestaurants();
-  document.getElementById("allRestaurantsSection").scrollIntoView({ behavior: "smooth" });
+  document
+    .getElementById("allRestaurantsSection")
+    .scrollIntoView({ behavior: "smooth" });
 });
 
 document.getElementById("searchInput").addEventListener("keydown", (e) => {
@@ -306,7 +332,9 @@ document.getElementById("searchInput").addEventListener("keydown", (e) => {
     searchQuery = e.target.value;
     visibleCount = PAGE_SIZE;
     renderAllRestaurants();
-    document.getElementById("allRestaurantsSection").scrollIntoView({ behavior: "smooth" });
+    document
+      .getElementById("allRestaurantsSection")
+      .scrollIntoView({ behavior: "smooth" });
   }
 });
 
@@ -335,11 +363,13 @@ filterBtn.addEventListener("click", () => {
   filterBtn.classList.toggle("active");
 });
 
-document.querySelectorAll(".filter-option").forEach(btn => {
+document.querySelectorAll(".filter-option").forEach((btn) => {
   btn.addEventListener("click", () => {
     const filterType = btn.dataset.filter;
     // Deactivate siblings
-    document.querySelectorAll(`.filter-option[data-filter="${filterType}"]`).forEach(b => b.classList.remove("active"));
+    document
+      .querySelectorAll(`.filter-option[data-filter="${filterType}"]`)
+      .forEach((b) => b.classList.remove("active"));
     btn.classList.add("active");
 
     if (filterType === "time") activeTimeFilter = btn.dataset.value;

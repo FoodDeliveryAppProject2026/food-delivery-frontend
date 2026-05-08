@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hot Meal</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="./who.css" />
+    <link rel="stylesheet" href="./media.css" />
+  </head>
+
+  <body>
+    <header class="navbar">
+      <!-- <i class="fa-solid fa-bars"></i> -->
+      <div class="logo">HOT MEAL</div>
+      <!-- <i class="fa-regular fa-circle-user"></i> -->
+    </header>
+    <div class="container">
+      <section class="hero">
+        <h1>Who are you today?</h1>
+        <p>Choose your role to get started with your Hot Meal journey.</p>
+      </section>
+
+      <section class="cards">
+        <div class="role-card">
+          <div class="icon-box">
+            <i class="fa-solid fa-utensils"></i>
+          </div>
+
+          <h2>CUSTOMER</h2>
+
+          <p>
+            Order delicious meals from your favorite local diners and roadside
+            icons.
+          </p>
+
+          <a href="../register/user-register/user-register.html">
+            <button class="select-btn" data-role="Customer">SELECT</button>
+          </a>
+        </div>
+
+        <div class="role-card">
+          <div class="icon-box">
+            <i class="fa-solid fa-store"></i>
+          </div>
+
+          <h2>VENDOR</h2>
+
+          <p>
+            Manage your diner, update your menu, and grow your local fan base.
+          </p>
+
+          <a href="../register/vendor-register/vendor-register.html">
+            <button class="select-btn" data-role="Vendor">SELECT</button>
+          </a>
+        </div>
+
+        <div class="role-card">
+          <div class="icon-box">
+            <i class="fa-solid fa-motorcycle"></i>
+          </div>
+
+          <h2>DRIVER</h2>
+
+          <p>
+            Take to the road and deliver hot comfort food to hungry neighbors.
+          </p>
+
+          <a href="../register/driver-register/driver-register.html">
+            <button class="select-btn" data-role="Driver">SELECT</button>
+          </a>
+        </div>
+      </section>
+    <script src="./who.js"></script>
+  </body>
+</html>
