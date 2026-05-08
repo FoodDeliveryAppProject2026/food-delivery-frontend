@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.13.6 on win32)" generated="2026-05-09T01:19:11.507948" rpa="false" schemaversion="5">
+<suite id="s1" name="User-Register Test" source="C:\Users\Lenovo\food-delivery-frontend\robot\user-register_test.robot">
+<kw name="Open Browser To Register Page" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:11.760910" level="INFO">Opening browser 'chrome' to base url 'file:///C:/Users/Lenovo/food-delivery-frontend/pages/user-register.html'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-05-09T01:19:11.760605" elapsed="1.298509"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-05-09T01:19:13.059376" elapsed="0.026200"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>5s</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2026-05-09T01:19:13.085780" elapsed="0.001264"/>
+</kw>
+<status status="PASS" start="2026-05-09T01:19:11.759862" elapsed="1.327310"/>
+</kw>
+<test id="s1-t1" name="Open Register Page Successfully" line="13">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>id:registerForm</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-05-09T01:19:13.088240" elapsed="0.021871"/>
+</kw>
+<kw name="Get Title" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:13.120373" level="INFO">${title} = Hot Meal</msg>
+<var>${title}</var>
+<doc>Returns the title of the current page.</doc>
+<status status="PASS" start="2026-05-09T01:19:13.110692" elapsed="0.009763"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2026-05-09T01:19:13.121538" level="INFO">Length is 8.</msg>
+<arg>${title}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2026-05-09T01:19:13.120849" elapsed="0.000834"/>
+</kw>
+<status status="PASS" start="2026-05-09T01:19:13.087267" elapsed="0.037654"/>
+</test>
+<test id="s1-t2" name="Valid Signup Data" line="19">
+<kw name="Reload Page" owner="SeleniumLibrary">
+<doc>Simulates user reloading page.</doc>
+<status status="PASS" start="2026-05-09T01:19:13.127574" elapsed="0.082542"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:13.211787" level="INFO">Typing text 'Omar' into text field 'id:firstName'.</msg>
+<arg>id:firstName</arg>
+<arg>Omar</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:13.211018" elapsed="0.199986"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:13.412236" level="INFO">Typing text 'Hisham' into text field 'id:lastName'.</msg>
+<arg>id:lastName</arg>
+<arg>Hisham</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:13.411906" elapsed="0.172115"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:13.587337" level="INFO">Typing text 'omar@gmail.com' into text field 'id:email'.</msg>
+<arg>id:email</arg>
+<arg>omar@gmail.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:13.586805" elapsed="0.160373"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:13.747870" level="INFO">Typing text '01066027761' into text field 'id:phone'.</msg>
+<arg>id:phone</arg>
+<arg>01066027761</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:13.747570" elapsed="0.173491"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:13.923769" level="INFO">Typing password into text field 'id:password'.</msg>
+<msg time="2026-05-09T01:19:14.006224" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id:password</arg>
+<arg>omar2005</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:13.922707" elapsed="0.157770"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:14.081629" level="INFO">Typing password into text field 'id:confirmPassword'.</msg>
+<msg time="2026-05-09T01:19:14.216309" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id:confirmPassword</arg>
+<arg>omar2005</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:14.081186" elapsed="0.234630"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:14.317285" level="INFO">Clicking button 'id:continueBtn'.</msg>
+<arg>id:continueBtn</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:14.316740" elapsed="0.243235"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-05-09T01:19:16.562551" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-05-09T01:19:14.560856" elapsed="2.002141"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:16.567863" level="INFO">Verifying element 'id:firstNameError' contains exact text ''.</msg>
+<arg>id:firstNameError</arg>
+<arg>${EMPTY}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2026-05-09T01:19:16.565731" elapsed="0.068402"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:16.637285" level="INFO">Verifying element 'id:lastNameError' contains exact text ''.</msg>
+<arg>id:lastNameError</arg>
+<arg>${EMPTY}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2026-05-09T01:19:16.636062" elapsed="0.042609"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:16.681381" level="INFO">Verifying element 'id:emailError' contains exact text ''.</msg>
+<arg>id:emailError</arg>
+<arg>${EMPTY}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2026-05-09T01:19:16.679562" elapsed="0.058300"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:16.740092" level="INFO">Verifying element 'id:phoneError' contains exact text ''.</msg>
+<arg>id:phoneError</arg>
+<arg>${EMPTY}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2026-05-09T01:19:16.738814" elapsed="0.059452"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:16.800914" level="INFO">Verifying element 'id:passwordError' contains exact text ''.</msg>
+<arg>id:passwordError</arg>
+<arg>${EMPTY}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2026-05-09T01:19:16.799376" elapsed="0.053168"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:16.854891" level="INFO">Verifying element 'id:confirmPasswordError' contains exact text ''.</msg>
+<arg>id:confirmPasswordError</arg>
+<arg>${EMPTY}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2026-05-09T01:19:16.853565" elapsed="0.040326"/>
+</kw>
+<status status="PASS" start="2026-05-09T01:19:13.126611" elapsed="3.768029"/>
+</test>
+<test id="s1-t3" name="Empty Submission Shows Errors" line="40">
+<kw name="Reload Page" owner="SeleniumLibrary">
+<doc>Simulates user reloading page.</doc>
+<status status="PASS" start="2026-05-09T01:19:16.897415" elapsed="0.080690"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:16.981987" level="INFO">Clicking button 'id:continueBtn'.</msg>
+<arg>id:continueBtn</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:16.981442" elapsed="0.155706"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-05-09T01:19:18.139370" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-05-09T01:19:17.137894" elapsed="1.001761"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:18.177663" level="INFO">Element 'id:firstNameError' contains text 'First name is required'.</msg>
+<arg>id:firstNameError</arg>
+<arg>First name is required</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2026-05-09T01:19:18.141191" elapsed="0.036685"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:18.234005" level="INFO">Element 'id:lastNameError' contains text 'Last name is required'.</msg>
+<arg>id:lastNameError</arg>
+<arg>Last name is required</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2026-05-09T01:19:18.178935" elapsed="0.055306"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:18.276703" level="INFO">Element 'id:emailError' contains text 'Please enter your email address'.</msg>
+<arg>id:emailError</arg>
+<arg>Please enter your email address</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2026-05-09T01:19:18.234963" elapsed="0.042043"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:18.320225" level="INFO">Element 'id:phoneError' contains text 'Please enter your phone number'.</msg>
+<arg>id:phoneError</arg>
+<arg>Please enter your phone number</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2026-05-09T01:19:18.278168" elapsed="0.042309"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:18.364806" level="INFO">Element 'id:passwordError' contains text 'Please enter your password'.</msg>
+<arg>id:passwordError</arg>
+<arg>Please enter your password</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2026-05-09T01:19:18.321400" elapsed="0.043599"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:18.415363" level="INFO">Element 'id:confirmPasswordError' contains text 'confirm your password'.</msg>
+<arg>id:confirmPasswordError</arg>
+<arg>confirm your password</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2026-05-09T01:19:18.365903" elapsed="0.050199"/>
+</kw>
+<status status="PASS" start="2026-05-09T01:19:16.896270" elapsed="1.522501"/>
+</test>
+<test id="s1-t4" name="Unmatched Passwords Show Error" line="53">
+<kw name="Reload Page" owner="SeleniumLibrary">
+<doc>Simulates user reloading page.</doc>
+<status status="PASS" start="2026-05-09T01:19:18.422421" elapsed="0.082677"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:18.506476" level="INFO">Typing text 'Omar' into text field 'id:firstName'.</msg>
+<arg>id:firstName</arg>
+<arg>Omar</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:18.505859" elapsed="0.190715"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:18.698489" level="INFO">Typing text 'Hisham' into text field 'id:lastName'.</msg>
+<arg>id:lastName</arg>
+<arg>Hisham</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:18.697983" elapsed="0.209020"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:18.909151" level="INFO">Typing text 'omar@gmail.com' into text field 'id:email'.</msg>
+<arg>id:email</arg>
+<arg>omar@gmail.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:18.908639" elapsed="0.204651"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:19.115986" level="INFO">Typing text '01066027761' into text field 'id:phone'.</msg>
+<arg>id:phone</arg>
+<arg>01066027761</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:19.115281" elapsed="0.208350"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:19.327944" level="INFO">Typing password into text field 'id:password'.</msg>
+<msg time="2026-05-09T01:19:19.435582" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id:password</arg>
+<arg>omar2005</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:19.327223" elapsed="0.214311"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:19.542863" level="INFO">Typing password into text field 'id:confirmPassword'.</msg>
+<msg time="2026-05-09T01:19:19.635871" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id:confirmPassword</arg>
+<arg>wrongpass</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:19.542320" elapsed="0.211537"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:19.755607" level="INFO">Clicking button 'id:continueBtn'.</msg>
+<arg>id:continueBtn</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:19.755134" elapsed="0.236633"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-05-09T01:19:20.993706" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-05-09T01:19:19.992535" elapsed="1.001526"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:21.032311" level="INFO">Element 'id:confirmPasswordError' contains text 'password doesn't match'.</msg>
+<arg>id:confirmPasswordError</arg>
+<arg>password doesn't match</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2026-05-09T01:19:20.995355" elapsed="0.037683"/>
+</kw>
+<status status="PASS" start="2026-05-09T01:19:18.421158" elapsed="2.614127"/>
+</test>
+<test id="s1-t5" name="Phone Number Less Than 11 Digits" line="71">
+<kw name="Reload Page" owner="SeleniumLibrary">
+<doc>Simulates user reloading page.</doc>
+<status status="PASS" start="2026-05-09T01:19:21.038939" elapsed="0.075802"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:21.116383" level="INFO">Typing text 'Omar' into text field 'id:firstName'.</msg>
+<arg>id:firstName</arg>
+<arg>Omar</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:21.115753" elapsed="0.188526"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:21.305664" level="INFO">Typing text 'Hisham' into text field 'id:lastName'.</msg>
+<arg>id:lastName</arg>
+<arg>Hisham</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:21.304993" elapsed="0.196602"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:21.503848" level="INFO">Typing text 'omar@gmail.com' into text field 'id:email'.</msg>
+<arg>id:email</arg>
+<arg>omar@gmail.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:21.503345" elapsed="0.199389"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:21.704889" level="INFO">Typing text '01066' into text field 'id:phone'.</msg>
+<arg>id:phone</arg>
+<arg>01066</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:21.704351" elapsed="0.201326"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:21.907166" level="INFO">Typing password into text field 'id:password'.</msg>
+<msg time="2026-05-09T01:19:21.994717" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id:password</arg>
+<arg>omar2005</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:21.906435" elapsed="0.215301"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:22.123068" level="INFO">Typing password into text field 'id:confirmPassword'.</msg>
+<msg time="2026-05-09T01:19:22.225250" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id:confirmPassword</arg>
+<arg>omar2005</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:22.122602" elapsed="0.217079"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:22.341485" level="INFO">Clicking button 'id:continueBtn'.</msg>
+<arg>id:continueBtn</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:22.341014" elapsed="0.218649"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-05-09T01:19:23.562307" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-05-09T01:19:22.560766" elapsed="1.001797"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:23.590753" level="INFO">Element 'id:phoneError' contains text 'Please enter a valid phone number'.</msg>
+<arg>id:phoneError</arg>
+<arg>Please enter a valid phone number</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2026-05-09T01:19:23.564773" elapsed="0.026229"/>
+</kw>
+<status status="PASS" start="2026-05-09T01:19:21.037554" elapsed="2.554792"/>
+</test>
+<test id="s1-t6" name="Phone Number More Than 11 Digits" line="89">
+<kw name="Reload Page" owner="SeleniumLibrary">
+<doc>Simulates user reloading page.</doc>
+<status status="PASS" start="2026-05-09T01:19:23.598900" elapsed="0.094532"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:23.695016" level="INFO">Typing text 'Omar' into text field 'id:firstName'.</msg>
+<arg>id:firstName</arg>
+<arg>Omar</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:23.694322" elapsed="0.210289"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:23.908672" level="INFO">Typing text 'Hisham' into text field 'id:lastName'.</msg>
+<arg>id:lastName</arg>
+<arg>Hisham</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:23.908079" elapsed="0.211895"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:24.123222" level="INFO">Typing text 'omar@gmail.com' into text field 'id:email'.</msg>
+<arg>id:email</arg>
+<arg>omar@gmail.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:24.122695" elapsed="0.213595"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:24.338642" level="INFO">Typing text '01066027761123' into text field 'id:phone'.</msg>
+<arg>id:phone</arg>
+<arg>01066027761123</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:24.337780" elapsed="0.193335"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:24.532898" level="INFO">Typing password into text field 'id:password'.</msg>
+<msg time="2026-05-09T01:19:24.590174" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id:password</arg>
+<arg>omar2005</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:24.532457" elapsed="0.157734"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:24.691426" level="INFO">Typing password into text field 'id:confirmPassword'.</msg>
+<msg time="2026-05-09T01:19:24.753120" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id:confirmPassword</arg>
+<arg>omar2005</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:24.690912" elapsed="0.131173"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:24.823230" level="INFO">Clicking button 'id:continueBtn'.</msg>
+<arg>id:continueBtn</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:24.822764" elapsed="0.162917"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-05-09T01:19:25.987932" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-05-09T01:19:24.986913" elapsed="1.001341"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:26.021040" level="INFO">Element 'id:phoneError' contains text 'Please enter a valid phone number'.</msg>
+<arg>id:phoneError</arg>
+<arg>Please enter a valid phone number</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2026-05-09T01:19:25.989964" elapsed="0.031571"/>
+</kw>
+<status status="PASS" start="2026-05-09T01:19:23.595029" elapsed="2.427758"/>
+</test>
+<test id="s1-t7" name="Password Eye Toggle Works" line="107">
+<kw name="Reload Page" owner="SeleniumLibrary">
+<doc>Simulates user reloading page.</doc>
+<status status="PASS" start="2026-05-09T01:19:26.029178" elapsed="0.073414"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:26.103917" level="INFO">Typing password into text field 'id:password'.</msg>
+<msg time="2026-05-09T01:19:26.184002" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id:password</arg>
+<arg>omar2005</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:26.103373" elapsed="0.164343"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:26.269118" level="INFO">Typing password into text field 'id:confirmPassword'.</msg>
+<msg time="2026-05-09T01:19:26.358970" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id:confirmPassword</arg>
+<arg>omar2005</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:26.268555" elapsed="0.164501"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:26.434416" level="INFO">Clicking element 'id:eyeToggle'.</msg>
+<arg>id:eyeToggle</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:26.433855" elapsed="0.136576"/>
+</kw>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:26.623039" level="INFO">${type1} = text</msg>
+<var>${type1}</var>
+<arg>id:password</arg>
+<arg>type</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:26.572915" elapsed="0.050405"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${type1}</arg>
+<arg>text</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-05-09T01:19:26.624384" elapsed="0.001761"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:26.628318" level="INFO">Clicking element 'id:eyeToggle'.</msg>
+<arg>id:eyeToggle</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:26.627429" elapsed="0.204647"/>
+</kw>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:26.858974" level="INFO">${type2} = password</msg>
+<var>${type2}</var>
+<arg>id:password</arg>
+<arg>type</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:26.832779" elapsed="0.026333"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${type2}</arg>
+<arg>password</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-05-09T01:19:26.859886" elapsed="0.001141"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:26.862829" level="INFO">Clicking element 'id:confirmEyeToggle'.</msg>
+<arg>id:confirmEyeToggle</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:26.862230" elapsed="0.127451"/>
+</kw>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:27.021815" level="INFO">${type3} = text</msg>
+<var>${type3}</var>
+<arg>id:confirmPassword</arg>
+<arg>type</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:26.990453" elapsed="0.031472"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${type3}</arg>
+<arg>text</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-05-09T01:19:27.022567" elapsed="0.000953"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:27.024532" level="INFO">Clicking element 'id:confirmEyeToggle'.</msg>
+<arg>id:confirmEyeToggle</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:27.024177" elapsed="0.124566"/>
+</kw>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2026-05-09T01:19:27.186118" level="INFO">${type4} = password</msg>
+<var>${type4}</var>
+<arg>id:confirmPassword</arg>
+<arg>type</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2026-05-09T01:19:27.149921" elapsed="0.036345"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${type4}</arg>
+<arg>password</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-05-09T01:19:27.187201" elapsed="0.001260"/>
+</kw>
+<status status="PASS" start="2026-05-09T01:19:26.025748" elapsed="1.163691"/>
+</test>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-05-09T01:19:27.192142" elapsed="2.419825"/>
+</kw>
+<status status="PASS" start="2026-05-09T01:19:11.509913" elapsed="18.102255"/>
+</suite>
+<statistics>
+<total>
+<stat pass="7" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="User-Register Test" id="s1" pass="7" fail="0" skip="0">User-Register Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

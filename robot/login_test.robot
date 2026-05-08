@@ -2,7 +2,7 @@
 Library    SeleniumLibrary
 
 *** Variables ***
-${URL}        file:///D:/ProjectFood/food-delivery-frontend/login.html
+${URL}        file:///C:/Users/Lenovo/food-delivery-frontend/pages/login.html
 ${BROWSER}    chrome
 
 *** Test Cases ***
