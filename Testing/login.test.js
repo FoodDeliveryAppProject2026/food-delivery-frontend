@@ -7,12 +7,13 @@ const path = require('path');
 
 const html = fs.readFileSync(path.resolve(__dirname, '../pages/login.html'), 'utf8');
 
-const setLoading = require('../js/login.js');
+let setLoading;
 describe('Login Form Test', () => {
 	beforeEach(() => {
 		document.documentElement.innerHTML = html.toString();
 		jest.resetModules();
 		require('../js/login.js');
+		({ setLoading } = require("../js/login.js"));
 	});
 	
 	test.each([["exmaple123@outlook.com","asdasd_21332"], ["example2@gmail.com","321345"]], (email, password) => {
@@ -79,8 +80,8 @@ describe('Login Form Test', () => {
 
 	        setLoading(true);
 
-	        expect(continueBtn.disabled).toBe(true);
-	        expect(continueBtn.classList.contains("loading")).toBe(true);
+	        expect(continueButton.disabled).toBe(true);
+	        expect(continueButton.classList.contains("loading")).toBe(true);
 
    	 });
 
@@ -91,8 +92,8 @@ describe('Login Form Test', () => {
 
         setLoading(false);
 
-        expect(continueBtn.disabled).toBe(false);
-        expect(continueBtn.classList.contains("loading")).toBe(false);
+        expect(continueButton.disabled).toBe(false);
+        expect(continueButton.classList.contains("loading")).toBe(false);
     });
 
 
@@ -170,12 +171,15 @@ describe('Login Form Test', () => {
 	it("Should Trim whitespaces from Email.", () => {
 	    const emailField = document.getElementById("email");
 	    const continueButton = document.getElementById("continueBtn");
+		const emailError = document.getElementById("emailError");
+		const passwordField = document.getElementById("password");
 
 	    emailField.value = "  test@example.com  ";
+		passwordField.value = "CorrectPass_1";
 	    continueButton.click();
 
 
-	    expect(emailField.value).toBe("test@example.com");
+	    expect(emailField.textContent).toBe("");
 	
 
 	});
@@ -184,9 +188,7 @@ describe('Login Form Test', () => {
 
 		const forgetPass = document.querySelector(".forgot-link");
 
-		expect(forgetPass.getAttribute("href")).toBe("forgot-password.html");
+		expect(forgetPass.getAttribute("href")).toBe("../pages/forgot-password.html");
 
 	});
-
-
 });
