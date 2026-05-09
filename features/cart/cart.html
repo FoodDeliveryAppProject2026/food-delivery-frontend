@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HotMeal Cart</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./cart.css" />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="navbar-logo">
+        <a href="../home/home.html">
+          <img
+            src="../../images/HOTMEAL-23 - 1.svg"
+            alt="App Logo"
+            class="logo-img"
+          />
+        </a>
+      </div>
+      <div class="nav-links">
+        <a href="../cart/cart.html" class="cart-icon-link" title="Go to Cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </a>
+      </div>
+    </nav>
+
+    <main class="container">
+      <h1 class="main-title">Your Cart</h1>
+      <div class="content-wrapper">
+        <section class="cart-section">
+          <div class="cart-card">
+            <img src="../../images/dish1.png.webp" class="item-img" />
+            <div class="item-details">
+              <h3>Dragon Roll</h3>
+              <p>Premium eel & cucumber topped with avocado</p>
+              <button class="remove-btn">
+                <i class="fa-regular fa-trash-can"></i> Remove
+              </button>
+            </div>
+            <div class="qty-wrapper">
+              <button class="qty-btn">-</button>
+              <span class="qty-num">2</span>
+              <button class="qty-btn">+</button>
+            </div>
+            <div class="price">$32.00</div>
+          </div>
+
+          <div class="cart-card">
+            <img src="../../images/dish2.png.webp" class="item-img" />
+            <div class="item-details">
+              <h3>Tonkotsu Ramen</h3>
+              <p>Rich pork bone broth with chashu pork</p>
+              <button class="remove-btn">
+                <i class="fa-regular fa-trash-can"></i> Remove
+              </button>
+            </div>
+            <div class="qty-wrapper">
+              <button class="qty-btn">-</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn">+</button>
+            </div>
+            <div class="price">$16.50</div>
+          </div>
+          <div class="cart-card">
+            <img src="../../images/dish1.png.webp" class="item-img" />
+            <div class="item-details">
+              <h3>Tonkotsu Ramen</h3>
+              <p>Rich pork bone broth with chashu pork</p>
+              <button class="remove-btn">
+                <i class="fa-regular fa-trash-can"></i> Remove
+              </button>
+            </div>
+            <div class="qty-wrapper">
+              <button class="qty-btn">-</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn">+</button>
+            </div>
+            <div class="price">$16.50</div>
+          </div>
+          <div class="cart-card">
+            <img src="../../images/dish2.png.webp" class="item-img" />
+            <div class="item-details">
+              <h3>Tonkotsu Ramen</h3>
+              <p>Rich pork bone broth with chashu pork</p>
+              <button class="remove-btn">
+                <i class="fa-regular fa-trash-can"></i> Remove
+              </button>
+            </div>
+            <div class="qty-wrapper">
+              <button class="qty-btn">-</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn">+</button>
+            </div>
+            <div class="price">$16.50</div>
+          </div>
+
+          <h2 class="sub-title">Complete your meal</h2>
+          <div class="upsell-row">
+            <div class="upsell-card">
+              <div class="upsell-icon red-bg">
+                <i class="fa-solid fa-wine-glass"></i>
+              </div>
+              <div class="upsell-info">
+                <h4>Iced Matcha Latte</h4>
+                <span>$5.00</span>
+              </div>
+              <button class="add-btn">+</button>
+            </div>
+            <div class="upsell-card">
+              <div class="upsell-icon grey-bg">
+                <i class="fa-solid fa-cookie"></i>
+              </div>
+              <div class="upsell-info">
+                <h4>Mochi Trio</h4>
+                <span>$4.50</span>
+              </div>
+              <button class="add-btn grey">+</button>
+            </div>
+          </div>
+        </section>
+
+        <aside class="summary-section">
+          <div class="summary-card">
+            <h2>Order Summary</h2>
+            <div class="row">
+              <span>Subtotal</span>
+              <span class="bold">$48.50</span>
+            </div>
+            <div class="row">
+              <span>Delivery Fee</span>
+              <span class="free">FREE</span>
+            </div>
+            <div class="row">
+              <span>Tax</span>
+              <span class="bold">$3.88</span>
+            </div>
+            <div class="divider"></div>
+            <div class="row total-row">
+              <span class="total-label">Total</span>
+              <span class="total-price">$52.38</span>
+            </div>
+
+            <div class="promo-box">
+              <input type="text" placeholder="Enter code" />
+              <button>Apply</button>
+            </div>
+
+            <button class="checkout-btn">
+              PROCEED TO CHECKOUT <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <p class="secure-tag">
+              <i class="fa-solid fa-lock"></i> Secure payment powered by HotMeal
+              Pay
+            </p>
+          </div>
+        </aside>
+      </div>
+    </main>
+    <script src="./cart.js"></script>
+  </body>
+</html>
