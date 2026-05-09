@@ -36,7 +36,7 @@ button {
   color: white;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 0 20px;
   position: sticky;
   top: 0;
@@ -48,12 +48,10 @@ button {
   font-size: 22px;
 }
 
-.logo {
-  font-family: "Abril Fatface", serif;
-  font-size: 2rem;
-  letter-spacing: 1px;
-  font-style: italic;
-  margin: auto;
+.logo .logo-img {
+  display: block;
+  height: 46px;
+  width: auto;
 }
 
 /* Hero */
