@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Delivery Orders</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@700;800&family=Work+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="./orders.css" />
+  </head>
+  <body>
+    <div class="overlay" id="overlay"></div>
+
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-btn" id="menuBtn">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="logo">
+          <a href="../home/home.html">
+            <img
+              src="../../images/HOTMEAL-23 - 1.svg"
+              alt="App Logo"
+              class="logo-img"
+            />
+          </a>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <button class="help-btn">
+          <i class="fa-solid fa-circle-question"></i>
+          Get Help
+        </button>
+
+        <i class="fa-solid fa-bell notification"></i>
+        <a href="#">FAQ</a>
+        <a href="#">Logout</a>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar" id="sidebar">
+        <div class="business-card">
+          <h2>Burger House</h2>
+          <p>Food Delivery Business</p>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="../dashboard/dashboard.html">
+            <i class="fa-solid fa-house"></i>
+            Dashboard
+          </a>
+
+          <a href="../orders/orders.html" class="active">
+            <i class="fa-solid fa-bag-shopping"></i>
+            Orders
+          </a>
+
+          <a href="#">
+            <i class="fa-solid fa-store"></i>
+            Stores
+          </a>
+
+          <a href="#">
+            <i class="fa-solid fa-chart-line"></i>
+            Analytics
+          </a>
+
+          <a href="#">
+            <i class="fa-solid fa-users"></i>
+            Customers
+          </a>
+
+          <a href="#">
+            <i class="fa-solid fa-bullhorn"></i>
+            Marketing
+          </a>
+
+          <a href="../menu/menu.html">
+            <i class="fa-solid fa-utensils"></i>
+            Menu
+          </a>
+
+          <a href="#">
+            <i class="fa-solid fa-gear"></i>
+            Settings
+          </a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <div class="page-header">
+          <div>
+            <p class="small-title">Restaurant Dashboard</p>
+            <h2>Orders</h2>
+          </div>
+
+          <button class="export-btn">
+            <i class="fa-solid fa-download"></i>
+            Export Orders
+          </button>
+        </div>
+
+        <div class="tabs">
+          <button class="tab active">All Orders</button>
+          <button class="tab">Pending</button>
+          <button class="tab">Delivered</button>
+          <button class="tab">Cancelled</button>
+        </div>
+
+        <div class="filters">
+          <button>Bob's Burgers</button>
+          <button>12/12/2026 - 19/12/2026</button>
+          <button>Sort</button>
+          <button>Order Issue</button>
+          <button>Premium Users</button>
+
+          <button class="search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+
+        <div class="orders-table">
+          <div class="table-head">
+            <span>Order</span>
+            <span>Customer</span>
+            <span>Fulfillment</span>
+            <span>Status</span>
+            <span>Total</span>
+          </div>
+
+          <div class="order-card">
+            <div class="order-id">
+              <span class="order-dot preparing"></span>
+              #FD-1201
+            </div>
+
+            <div class="customer-info">
+              <h4>Ahmed Ali</h4>
+              <p>12 Dec 2026</p>
+            </div>
+
+            <div class="fulfillment">Delivery <span>Uber Eats</span></div>
+
+            <div>
+              <span class="status pending">Preparing</span>
+            </div>
+
+            <div class="price">$36.98</div>
+          </div>
+
+          <div class="order-card">
+            <div class="order-id">
+              <span class="order-dot delivered"></span>
+              #FD-1202
+            </div>
+
+            <div class="customer-info">
+              <h4>Sara Mohamed</h4>
+              <p>15 Dec 2026</p>
+            </div>
+
+            <div class="fulfillment">Delivery <span>Hot Meal</span></div>
+
+            <div>
+              <span class="status delivered-status">Delivered</span>
+            </div>
+
+            <div class="price">$24.70</div>
+          </div>
+
+          <div class="order-card">
+            <div class="order-id">
+              <span class="order-dot cancelled"></span>
+              #FD-1203
+            </div>
+
+            <div class="customer-info">
+              <h4>John Carter</h4>
+              <p>15 Dec 2026</p>
+            </div>
+
+            <div class="fulfillment">Pickup <span>Restaurant</span></div>
+
+            <div>
+              <span class="status cancelled-status">Cancelled</span>
+            </div>
+
+            <div class="price">$32.35</div>
+          </div>
+
+          <div class="order-card">
+            <div class="order-id">
+              <span class="order-dot delivered"></span>
+              #FD-1204
+            </div>
+
+            <div class="customer-info">
+              <h4>Omar Hisham</h4>
+              <p>16 Dec 2026</p>
+            </div>
+
+            <div class="fulfillment">Delivery <span>Hot Meal</span></div>
+
+            <div>
+              <span class="status delivered-status">Delivered</span>
+            </div>
+
+            <div class="price">$52.10</div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="./orders.js"></script>
+  </body>
+</html>
