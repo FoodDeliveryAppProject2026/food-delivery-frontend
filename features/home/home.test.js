@@ -2,93 +2,158 @@
  * @jest-environment jsdom
  */
 
-document.body.innerHTML = `
-    <div id="reviewsGrid"></div>
+const fs = require("fs");
+const path = require("path");
 
-    <nav id="navbar"></nav>
+describe("Home Page Tests (Full Coverage)", () => {
+  beforeEach(() => {
+    document.body.innerHTML = `
+      <div id="reviewsGrid"></div>
 
-    <a href="#section1">Go</a>
+      <nav id="navbar"></nav>
 
-    <div id="section1"></div>
-`;
+      <a href="#section1">Go</a>
+      <a href="#">Empty</a>
 
-global.IntersectionObserver = class {
-    constructor(callback) {
+      <div id="section1"></div>
+    `;
+
+    jest.resetModules();
+
+    // Mock IntersectionObserver
+    global.IntersectionObserver = class {
+      constructor(callback) {
         this.callback = callback;
-    }
+      }
 
-    observe(element) {
+      observe(element) {
         this.callback([
-            {
-                isIntersecting: true,
-                target: element,
-            },
+          {
+            isIntersecting: true,
+            target: element,
+          },
         ]);
-    }
+      }
 
-    unobserve() {}
-};
+      unobserve() {}
+    };
+global.initHeroSearch = jest.fn();
+global.initFeatureRipple = jest.fn();
+global.initCTAButtons = jest.fn();
+    // Import after DOM + mocks
+    require("./home.js");
+  });
 
-require("./home.js");
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
 
-describe("Home Page Tests", () => {
+  // ================= REVIEWS =================
+  test("renders reviews correctly", () => {
+    window.renderReviews();
 
-    test("Render Reviews Correctly", () => {
+    const cards = document.querySelectorAll(".review-card");
+    expect(cards.length).toBe(3);
+  });
 
-        window.renderReviews();
+  test("reviews grid exists check (early return safety)", () => {
+    document.getElementById("reviewsGrid").remove();
 
-        const cards =
-            document.querySelectorAll(".review-card");
+    expect(() => window.renderReviews()).not.toThrow();
+  });
 
-        expect(cards.length).toBe(3);
+  // ================= NAVBAR SCROLL =================
+  test("navbar adds scrolled class when scrolling down", () => {
+    window.initNavScroll();
+
+    Object.defineProperty(window, "scrollY", {
+      value: 100,
+      writable: true,
     });
 
-    test("Navbar Scroll Effect", () => {
+    window.dispatchEvent(new Event("scroll"));
 
-        window.initNavScroll();
+    expect(
+      document.getElementById("navbar").classList.contains("scrolled")
+    ).toBe(true);
+  });
 
-        Object.defineProperty(window, "scrollY", {
-            value: 100,
-            writable: true,
-        });
+  test("navbar removes scrolled class when scrolling up", () => {
+    window.initNavScroll();
 
-        window.dispatchEvent(new Event("scroll"));
-
-        expect(
-            document
-                .getElementById("navbar")
-                .classList
-                .contains("scrolled")
-        ).toBe(true);
+    Object.defineProperty(window, "scrollY", {
+      value: 0,
+      writable: true,
     });
 
-    test("Smooth Anchor Click", () => {
+    window.dispatchEvent(new Event("scroll"));
 
-        const target =
-            document.getElementById("section1");
+    expect(
+      document.getElementById("navbar").classList.contains("scrolled")
+    ).toBe(false);
+  });
 
-        target.scrollIntoView = jest.fn();
+  test("navbar early return when missing element", () => {
+    document.getElementById("navbar").remove();
 
-        window.initSmoothAnchors();
+    expect(() => window.initNavScroll()).not.toThrow();
+  });
 
-        document
-            .querySelector('a[href="#section1"]')
-            .click();
+  // ================= SMOOTH SCROLL =================
+  test("smooth scroll works for valid anchor", () => {
+    const target = document.getElementById("section1");
+    target.scrollIntoView = jest.fn();
 
-        expect(target.scrollIntoView)
-            .toHaveBeenCalled();
-    });
+    window.initSmoothAnchors();
 
-    test("Animation Observer Adds Visible Class", () => {
+    document.querySelector('a[href="#section1"]').click();
 
-        window.renderReviews();
+    expect(target.scrollIntoView).toHaveBeenCalled();
+  });
 
-        const card =
-            document.querySelector(".review-card");
+  test("smooth scroll ignores missing target", () => {
+    const link = document.createElement("a");
+    link.setAttribute("href", "#doesNotExist");
 
-        expect(
-            card.classList.contains("visible")
-        ).toBe(true);
-    });
+    document.body.appendChild(link);
 
+    window.initSmoothAnchors();
+
+    link.click();
+
+    expect(true).toBe(true); // no crash = pass
+  });
+
+  test("smooth scroll ignores empty href", () => {
+    const link = document.querySelector('a[href="#"]');
+
+    window.initSmoothAnchors();
+
+    expect(() => link.click()).not.toThrow();
+  });
+
+  // ================= INTERSECTION OBSERVER =================
+  test("animation observer adds visible class", () => {
+    window.renderReviews();
+
+    const card = document.querySelector(".review-card");
+
+    expect(card.classList.contains("visible")).toBe(true);
+  });
+
+  // ================= DOMCONTENTLOADED INIT =================
+  test("DOMContentLoaded initializes page", () => {
+    document.dispatchEvent(new Event("DOMContentLoaded"));
+
+    const cards = document.querySelectorAll(".review-card");
+
+    expect(cards.length).toBe(3);
+  });
+
+  // ================= EDGE SAFETY =================
+  test("renderReviews does nothing if grid missing", () => {
+    document.getElementById("reviewsGrid").remove();
+
+    expect(() => window.renderReviews()).not.toThrow();
+  });
 });

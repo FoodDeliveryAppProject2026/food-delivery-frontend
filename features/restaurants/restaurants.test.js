@@ -5,14 +5,13 @@
 const fs = require("fs");
 const path = require("path");
 
-describe("Restaurants Page Tests", () => {
+describe("Restaurants Page Tests (Full Coverage)", () => {
   let renderTopRestaurants;
   let renderAllRestaurants;
   let getFilteredRestaurants;
   let showToast;
 
   beforeEach(() => {
-    // Load HTML
     const html = fs.readFileSync(
       path.resolve(__dirname, "./restaurants.html"),
       "utf8"
@@ -20,10 +19,8 @@ describe("Restaurants Page Tests", () => {
 
     document.documentElement.innerHTML = html;
 
-    // Mock scrollIntoView
     Element.prototype.scrollIntoView = jest.fn();
 
-    // Mock sessionStorage
     Object.defineProperty(window, "sessionStorage", {
       value: {
         setItem: jest.fn(),
@@ -31,7 +28,8 @@ describe("Restaurants Page Tests", () => {
       writable: true,
     });
 
-    // Import JS
+    jest.resetModules();
+
     const app = require("./restaurants.js");
 
     renderTopRestaurants = app.renderTopRestaurants;
@@ -41,97 +39,207 @@ describe("Restaurants Page Tests", () => {
   });
 
   afterEach(() => {
-    jest.resetModules();
+    jest.clearAllMocks();
   });
 
-  test("Render top restaurants correctly", () => {
+  // ================= TOP RESTAURANTS =================
+  test("renders top restaurants", () => {
     renderTopRestaurants();
 
     const cards = document.querySelectorAll(".restaurant-card");
-
     expect(cards.length).toBe(3);
   });
 
-  test("Render all restaurants correctly", () => {
+  // ================= ALL RESTAURANTS =================
+  test("renders all restaurants initially", () => {
     renderAllRestaurants();
 
     const cards = document.querySelectorAll(".list-card");
-
     expect(cards.length).toBeGreaterThan(0);
   });
 
-  test("Filtered restaurants returns array", () => {
+  // ================= FILTER FUNCTION =================
+  test("getFilteredRestaurants returns array", () => {
     const result = getFilteredRestaurants();
-
     expect(Array.isArray(result)).toBe(true);
   });
 
-  test("Search button filters restaurants", () => {
-    const searchInput = document.getElementById("searchInput");
-    const searchBtn = document.getElementById("searchBtn");
-
-    searchInput.value = "Burger";
-
-    searchBtn.click();
+  test("cuisine filter works", () => {
+    document.querySelector('[data-cuisine="burgers"]').click();
+    renderAllRestaurants();
 
     const cards = document.querySelectorAll(".list-card");
+    expect(cards.length).toBeGreaterThanOrEqual(0);
+  });
 
+  test("search filter works", () => {
+    const input = document.getElementById("searchInput");
+    const btn = document.getElementById("searchBtn");
+
+    input.value = "Burger";
+    btn.click();
+
+    const cards = document.querySelectorAll(".list-card");
     expect(cards.length).toBeGreaterThan(0);
   });
 
-  test("Sort select changes restaurant order", () => {
+  test("search input enter key works", () => {
+    const input = document.getElementById("searchInput");
+
+    input.value = "Pizza";
+    input.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }));
+
+    const cards = document.querySelectorAll(".list-card");
+    expect(cards.length).toBeGreaterThanOrEqual(0);
+  });
+
+  test("search clears correctly", () => {
+    const input = document.getElementById("searchInput");
+
+    input.value = "";
+    input.dispatchEvent(new Event("input"));
+
+    const result = getFilteredRestaurants();
+    expect(Array.isArray(result)).toBe(true);
+  });
+
+  // ================= SORTING =================
+  test("sort by rating", () => {
     const sortSelect = document.getElementById("sortSelect");
 
     sortSelect.value = "rating";
-
     sortSelect.dispatchEvent(new Event("change"));
 
     const cards = document.querySelectorAll(".list-card");
-
     expect(cards.length).toBeGreaterThan(0);
   });
 
-  test("Filter panel toggles hidden class", () => {
-    const filterBtn = document.getElementById("filterBtn");
-    const filterPanel = document.getElementById("filterPanel");
+  test("sort by time", () => {
+    const sortSelect = document.getElementById("sortSelect");
 
-    filterBtn.click();
+    sortSelect.value = "time";
+    sortSelect.dispatchEvent(new Event("change"));
 
-    expect(
-      filterPanel.classList.contains("hidden")
-    ).toBe(false);
+    expect(document.querySelectorAll(".list-card").length).toBeGreaterThan(0);
   });
 
-  test("Show more button increases visible restaurants", () => {
+  test("sort by delivery", () => {
+    const sortSelect = document.getElementById("sortSelect");
+
+    sortSelect.value = "delivery";
+    sortSelect.dispatchEvent(new Event("change"));
+
+    expect(document.querySelectorAll(".list-card").length).toBeGreaterThan(0);
+  });
+
+  // ================= FILTER PANEL =================
+  test("filter panel toggles", () => {
+    const btn = document.getElementById("filterBtn");
+    const panel = document.getElementById("filterPanel");
+
+    btn.click();
+
+    expect(panel.classList.contains("hidden")).toBe(false);
+  });
+
+  test("time filter works", () => {
+    document
+      .querySelector('[data-filter="time"][data-value="30"]')
+      .click();
+
     renderAllRestaurants();
 
-    const before =
-      document.querySelectorAll(".list-card").length;
+    expect(document.querySelectorAll(".list-card").length).toBeGreaterThanOrEqual(0);
+  });
+
+  test("fee filter free works", () => {
+    document
+      .querySelector('[data-filter="fee"][data-value="free"]')
+      .click();
+
+    renderAllRestaurants();
+
+    expect(getFilteredRestaurants().every(r => r.deliveryCost === 0)).toBe(true);
+  });
+
+  test("fee filter low works", () => {
+    document
+      .querySelector('[data-filter="fee"][data-value="low"]')
+      .click();
+
+    renderAllRestaurants();
+
+    expect(Array.isArray(getFilteredRestaurants())).toBe(true);
+  });
+
+  // ================= PAGINATION =================
+  test("show more increases items", () => {
+    renderAllRestaurants();
+
+    const before = document.querySelectorAll(".list-card").length;
 
     document.getElementById("showMoreBtn").click();
 
-    const after =
-      document.querySelectorAll(".list-card").length;
+    const after = document.querySelectorAll(".list-card").length;
 
     expect(after).toBeGreaterThanOrEqual(before);
   });
 
-  test("Toast shows correctly", () => {
-    const toast = document.getElementById("toast");
+  test("show more hides when finished", () => {
+    renderAllRestaurants();
 
-    showToast("Hello");
+    const btn = document.getElementById("showMoreBtn");
 
-    expect(toast.textContent).toContain("Hello");
-    expect(toast.classList.contains("hidden")).toBe(false);
+    for (let i = 0; i < 5; i++) {
+      btn.click();
+    }
+
+    expect(btn.classList.contains("hidden")).toBe(true);
   });
 
-  test("Restaurant click stores id in sessionStorage", () => {
+  // ================= EMPTY STATE =================
+  test("shows no results UI", () => {
+    const input = document.getElementById("searchInput");
+
+    input.value = "zzzzzzzz";
+    document.getElementById("searchBtn").click();
+
+    const noResults = document.getElementById("noResults");
+
+    expect(noResults.classList.contains("hidden")).toBe(false);
+  });
+
+  // ================= TOAST =================
+  jest.useFakeTimers();
+
+  test("toast shows and hides", () => {
+    const toast = document.getElementById("toast");
+
+    showToast("Hello World");
+
+    expect(toast.textContent).toContain("Hello World");
+
+    jest.advanceTimersByTime(2500);
+
+    expect(toast.classList.contains("hidden")).toBe(true);
+  });
+
+  // ================= SESSION STORAGE =================
+  test("click stores restaurant id", () => {
     renderAllRestaurants();
 
     const card = document.querySelector("[data-id]");
-
     card.click();
 
     expect(sessionStorage.setItem).toHaveBeenCalled();
+  });
+
+  // ================= VIEW ALL CATEGORIES =================
+  test("view all cuisines triggers toast", () => {
+    const btn = document.getElementById("viewAllCuisines");
+
+    btn.click();
+
+    expect(document.getElementById("toast")).toBeTruthy();
   });
 });

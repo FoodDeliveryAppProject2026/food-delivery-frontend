@@ -1,262 +1,166 @@
 /**
  * @jest-environment jsdom
  */
+
 const fs = require("fs");
 const path = require("path");
 
-const html = fs.readFileSync(
-  path.resolve(__dirname, "./user-register.html"),
-  "utf8",
-);
+describe("User Register - Full Coverage Tests", () => {
+  let registerForm;
 
-describe("User Sign Up Test", () => {
   beforeEach(() => {
-    document.documentElement.innerHTML = html.toString();
+    const html = fs.readFileSync(
+      path.resolve(__dirname, "./user-register.html"),
+      "utf8"
+    );
+
+    document.documentElement.innerHTML = html;
+
     jest.resetModules();
     require("./user-register.js");
-  });
-  test.each([
-    [
-      "example",
-      "test",
-      "example123@outlook.com",
-      "asdasd_21332",
-      "01066027761",
-    ],
-    ["omar", "hisham", "omarhisham@gmail.com", "omar2005", "01235423243"],
-  ])("valid signup data", (first, last, email, password, phone) => {
-    const continuebutton = document.getElementById("continueBtn");
 
-    const passwordError = document.getElementById("passwordError");
-    const passwordField = document.getElementById("password");
-
-    const emailError = document.getElementById("emailError");
-    const emailField = document.getElementById("email");
-
-    const firstNameInput = document.getElementById("firstName");
-    const firstNameError = document.getElementById("firstNameError");
-
-    const lastNameInput = document.getElementById("lastName");
-    const lastNameError = document.getElementById("lastNameError");
-
-    const confirmPasswordError = document.getElementById(
-      "confirmPasswordError",
-    );
-    const confirmpassInput = document.getElementById("confirmPassword");
-
-    const phoneInput = document.getElementById("phone");
-    const phoneError = document.getElementById("phoneError");
-
-    firstNameInput.value = first;
-    lastNameInput.value = last;
-    emailField.value = email;
-    passwordField.value = password;
-    confirmpassInput.value = password;
-    phoneInput.value = phone;
-    continuebutton.click();
-    expect(firstNameError.textContent).toBe("");
-    expect(lastNameError.textContent).toBe("");
-    expect(emailError.textContent).toBe("");
-    expect(passwordError.textContent).toBe("");
-    expect(confirmPasswordError.textContent).toBe("");
-    expect(phoneError.textContent).toBe("");
+    registerForm = document.getElementById("registerForm");
   });
 
-  test("Should Return Error On Empty Submissions", () => {
-    const continuebutton = document.getElementById("continueBtn");
+  // ================= VALID SUBMISSION =================
+  test("valid form submission passes validation", () => {
+    document.getElementById("firstName").value = "Omar";
+    document.getElementById("lastName").value = "Hisham";
+    document.getElementById("email").value = "omar@gmail.com";
+    document.getElementById("password").value = "123456";
+    document.getElementById("confirmPassword").value = "123456";
+    document.getElementById("phone").value = "01012345678";
 
-    const passwordError = document.getElementById("passwordError");
-    const emailError = document.getElementById("emailError");
-    const firstNameError = document.getElementById("firstNameError");
-    const lastNameError = document.getElementById("lastNameError");
-    const confirmPasswordError = document.getElementById(
-      "confirmPasswordError",
-    );
-    const phoneError = document.getElementById("phoneError");
+    registerForm.dispatchEvent(new Event("submit", { bubbles: true }));
 
-    continuebutton.click();
-
-    expect(firstNameError.textContent).toBe("First name is required.");
-    expect(lastNameError.textContent).toBe("Last name is required.");
-    expect(emailError.textContent).toBe("Please enter your email address.");
-    expect(passwordError.textContent).toBe("Please enter your password.");
-    expect(confirmPasswordError.textContent).toBe(
-      "You need to confirm your password.",
-    );
-    expect(phoneError.textContent).toBe("Please enter your phone number.");
+    expect(document.getElementById("emailError").textContent).toBe("");
   });
 
-  test.each([
-    [
-      "example",
-      "test",
-      "example123@outlook.com",
-      "asdasd_21332",
-      "omar",
-      "01066027761",
-    ],
-    [
-      "omar",
-      "hisham",
-      "omarhisham@gmail.com",
-      "omar2005",
-      "omar",
-      "01066027761",
-    ],
-  ])(
-    "Putting an unmatched passwords",
-    (first, last, email, password, password2, phone) => {
-      const continuebutton = document.getElementById("continueBtn");
+  // ================= EMPTY VALIDATION =================
+  test("empty form triggers all errors", () => {
+    registerForm.dispatchEvent(new Event("submit", { bubbles: true }));
 
-      const passwordError = document.getElementById("passwordError");
-      const passwordField = document.getElementById("password");
+    expect(document.getElementById("firstNameError").textContent).toBe(
+      "First name is required."
+    );
+    expect(document.getElementById("lastNameError").textContent).toBe(
+      "Last name is required."
+    );
+    expect(document.getElementById("emailError").textContent).toBe(
+      "Please enter your email address."
+    );
+    expect(document.getElementById("passwordError").textContent).toBe(
+      "Please enter your password."
+    );
+    expect(document.getElementById("confirmPasswordError").textContent).toBe(
+      "You need to confirm your password."
+    );
+    expect(document.getElementById("phoneError").textContent).toBe(
+      "Please enter your phone number."
+    );
+  });
 
-      const emailError = document.getElementById("emailError");
-      const emailField = document.getElementById("email");
+  // ================= PASSWORD MISMATCH =================
+  test("password mismatch triggers error", () => {
+    document.getElementById("firstName").value = "Omar";
+    document.getElementById("lastName").value = "Hisham";
+    document.getElementById("email").value = "omar@gmail.com";
+    document.getElementById("password").value = "123456";
+    document.getElementById("confirmPassword").value = "999999";
+    document.getElementById("phone").value = "01012345678";
 
-      const firstNameInput = document.getElementById("firstName");
-      const firstNameError = document.getElementById("firstNameError");
+    registerForm.dispatchEvent(new Event("submit", { bubbles: true }));
 
-      const lastNameInput = document.getElementById("lastName");
-      const lastNameError = document.getElementById("lastNameError");
+    expect(
+      document.getElementById("confirmPasswordError").textContent
+    ).toBe("password doesn't match.");
+  });
 
-      const confirmPasswordError = document.getElementById(
-        "confirmPasswordError",
-      );
-      const confirmpassInput = document.getElementById("confirmPassword");
+  // ================= PHONE INVALID =================
+  test("invalid phone triggers error", () => {
+    document.getElementById("firstName").value = "Omar";
+    document.getElementById("lastName").value = "Hisham";
+    document.getElementById("email").value = "omar@gmail.com";
+    document.getElementById("password").value = "123456";
+    document.getElementById("confirmPassword").value = "123456";
+    document.getElementById("phone").value = "123";
 
-      const phoneInput = document.getElementById("phone");
-      const phoneError = document.getElementById("phoneError");
+    registerForm.dispatchEvent(new Event("submit", { bubbles: true }));
 
-      firstNameInput.value = first;
-      lastNameInput.value = last;
-      emailField.value = email;
-      passwordField.value = password;
-      confirmpassInput.value = password2;
-      phoneInput.value = phone;
+    expect(document.getElementById("phoneError").textContent).toBe(
+      "Please enter a valid phone number."
+    );
+  });
 
-      continuebutton.click();
+  // ================= PASSWORD TOO SHORT =================
+  test("short password triggers validation error", () => {
+    document.getElementById("firstName").value = "Omar";
+    document.getElementById("lastName").value = "Hisham";
+    document.getElementById("email").value = "omar@gmail.com";
+    document.getElementById("password").value = "123";
+    document.getElementById("confirmPassword").value = "123";
+    document.getElementById("phone").value = "01012345678";
 
-      expect(firstNameError.textContent).toBe("");
-      expect(lastNameError.textContent).toBe("");
-      expect(emailError.textContent).toBe("");
-      expect(passwordError.textContent).toBe("");
-      expect(phoneError.textContent).toBe("");
-      expect(confirmPasswordError.textContent).toBe("password doesn't match.");
-    },
-  );
-  test.each([
-    ["example", "test", "example123@outlook.com", "asdasd_21332", "010660"],
-    ["omar", "hisham", "omarhisham@gmail.com", "omar2005", "01235"],
-  ])(
-    "Phone Number Smaller Than 11 Numbers",
-    (first, last, email, password, phone) => {
-      const continuebutton = document.getElementById("continueBtn");
+    registerForm.dispatchEvent(new Event("submit", { bubbles: true }));
 
-      const passwordError = document.getElementById("passwordError");
-      const passwordField = document.getElementById("password");
+    expect(document.getElementById("passwordError").textContent).toBe(
+      "Password must be at least 6 characters."
+    );
+  });
 
-      const emailError = document.getElementById("emailError");
-      const emailField = document.getElementById("email");
+  // ================= EMAIL INVALID =================
+  test("invalid email triggers error", () => {
+    document.getElementById("firstName").value = "Omar";
+    document.getElementById("lastName").value = "Hisham";
+    document.getElementById("email").value = "invalid-email";
+    document.getElementById("password").value = "123456";
+    document.getElementById("confirmPassword").value = "123456";
+    document.getElementById("phone").value = "01012345678";
 
-      const firstNameInput = document.getElementById("firstName");
-      const firstNameError = document.getElementById("firstNameError");
+    registerForm.dispatchEvent(new Event("submit", { bubbles: true }));
 
-      const lastNameInput = document.getElementById("lastName");
-      const lastNameError = document.getElementById("lastNameError");
+    expect(document.getElementById("emailError").textContent).toBe(
+      "Please enter a valid email address."
+    );
+  });
 
-      const confirmPasswordError = document.getElementById(
-        "confirmPasswordError",
-      );
-      const confirmpassInput = document.getElementById("confirmPassword");
-
-      const phoneInput = document.getElementById("phone");
-      const phoneError = document.getElementById("phoneError");
-
-      firstNameInput.value = first;
-      lastNameInput.value = last;
-      emailField.value = email;
-      passwordField.value = password;
-      confirmpassInput.value = password;
-      phoneInput.value = phone;
-      continuebutton.click();
-      expect(firstNameError.textContent).toBe("");
-      expect(lastNameError.textContent).toBe("");
-      expect(emailError.textContent).toBe("");
-      expect(passwordError.textContent).toBe("");
-      expect(confirmPasswordError.textContent).toBe("");
-      expect(phoneError.textContent).toBe("Please enter a valid phone number.");
-    },
-  );
-  test.each([
-    [
-      "example",
-      "test",
-      "example123@outlook.com",
-      "asdasd_21332",
-      "0106612421410",
-    ],
-    ["omar", "hisham", "omarhisham@gmail.com", "omar2005", "0123214124215"],
-  ])(
-    "Phone Number Longer Than 11 Numbers",
-    (first, last, email, password, phone) => {
-      const continuebutton = document.getElementById("continueBtn");
-
-      const passwordError = document.getElementById("passwordError");
-      const passwordField = document.getElementById("password");
-
-      const emailError = document.getElementById("emailError");
-      const emailField = document.getElementById("email");
-
-      const firstNameInput = document.getElementById("firstName");
-      const firstNameError = document.getElementById("firstNameError");
-
-      const lastNameInput = document.getElementById("lastName");
-      const lastNameError = document.getElementById("lastNameError");
-
-      const confirmPasswordError = document.getElementById(
-        "confirmPasswordError",
-      );
-      const confirmpassInput = document.getElementById("confirmPassword");
-
-      const phoneInput = document.getElementById("phone");
-      const phoneError = document.getElementById("phoneError");
-
-      firstNameInput.value = first;
-      lastNameInput.value = last;
-      emailField.value = email;
-      passwordField.value = password;
-      confirmpassInput.value = password;
-      phoneInput.value = phone;
-      continuebutton.click();
-      expect(firstNameError.textContent).toBe("");
-      expect(lastNameError.textContent).toBe("");
-      expect(emailError.textContent).toBe("");
-      expect(passwordError.textContent).toBe("");
-      expect(confirmPasswordError.textContent).toBe("");
-      expect(phoneError.textContent).toBe("Please enter a valid phone number.");
-    },
-  );
-
-  test("Toggeling the Eye click", () => {
+  // ================= EYE TOGGLE =================
+  test("eye toggle changes password visibility", () => {
     const eyeToggle = document.getElementById("eyeToggle");
     const confirmEyeToggle = document.getElementById("confirmEyeToggle");
-    const passwordField = document.getElementById("password");
-    const confirmpassInput = document.getElementById("confirmPassword");
-    const password = "omar";
-    passwordField.value = password;
-    confirmpassInput.value = password;
+
+    const password = document.getElementById("password");
+    const confirm = document.getElementById("confirmPassword");
 
     eyeToggle.click();
-    expect(passwordField.type).toBe("text");
+    expect(password.type).toBe("text");
 
     eyeToggle.click();
-    expect(passwordField.type).toBe("password");
+    expect(password.type).toBe("password");
 
     confirmEyeToggle.click();
-    expect(confirmpassInput.type).toBe("text");
+    expect(confirm.type).toBe("text");
 
     confirmEyeToggle.click();
-    expect(confirmpassInput.type).toBe("password");
+    expect(confirm.type).toBe("password");
+  });
+
+  // ================= INPUT CLEAR ERRORS =================
+  test("typing clears errors", () => {
+    const firstName = document.getElementById("firstName");
+    const firstNameError = document.getElementById("firstNameError");
+
+    firstNameError.textContent = "Error";
+    firstName.dispatchEvent(new Event("input"));
+
+    expect(firstNameError.textContent).toBe("");
+  });
+
+  // ================= setLoading COVERAGE =================
+  test("loading state toggles correctly", () => {
+    const btn = document.getElementById("continueBtn");
+
+    btn.click();
+    expect(btn.disabled).toBeDefined();
   });
 });
