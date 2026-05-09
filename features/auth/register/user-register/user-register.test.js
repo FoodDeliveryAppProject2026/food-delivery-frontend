@@ -4,13 +4,13 @@
 const fs = require('fs');
 const path = require('path');
 
-const html = fs.readFileSync(path.resolve(__dirname, '../pages/user-register.html'), 'utf8');
+const html = fs.readFileSync(path.resolve(__dirname, './user-register.html'), 'utf8');
 
 describe('User Sign Up Test' , () =>{
     beforeEach(() =>{
         document.documentElement.innerHTML = html.toString();
 		jest.resetModules();
-		require('../js/user-register.js');
+		require('./user-register.js');
     });
 test.each([
   ["example", "test", "example123@outlook.com", "asdasd_21332" , "01066027761"],
