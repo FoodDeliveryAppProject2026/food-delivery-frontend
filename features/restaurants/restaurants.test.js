@@ -14,7 +14,7 @@ describe("Restaurants Page Tests", () => {
   beforeEach(() => {
     // Load HTML
     const html = fs.readFileSync(
-      path.resolve(__dirname, "../pages/restaurants.html"),
+      path.resolve(__dirname, "./restaurants.html"),
       "utf8"
     );
 
@@ -32,7 +32,7 @@ describe("Restaurants Page Tests", () => {
     });
 
     // Import JS
-    const app = require("../js/restaurants.js");
+    const app = require("./restaurants.js");
 
     renderTopRestaurants = app.renderTopRestaurants;
     renderAllRestaurants = app.renderAllRestaurants;

@@ -6,7 +6,7 @@ const fs = require("fs");
 const path = require("path");
 
 const html = fs.readFileSync(
-  path.resolve(__dirname, "../pages/forgot-password.html"),
+  path.resolve(__dirname, "./forgot-password.html"),
   "utf8"
 );
 
@@ -15,7 +15,7 @@ describe("Forgot Password Form Test", () => {
     document.documentElement.innerHTML = html.toString();
 
     jest.resetModules();
-    require("../js/forgot-password.js");
+    require("./forgot-password.js");
   });
 
   test.each([

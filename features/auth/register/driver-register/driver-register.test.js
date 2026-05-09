@@ -5,15 +5,15 @@ const fs = require("fs");
 const path = require("path");
 
 const html = fs.readFileSync(
-  path.resolve(__dirname, "./user-register.html"),
+  path.resolve(__dirname, "./driver-register.html"),
   "utf8",
 );
 
-describe("User Sign Up Test", () => {
+describe("driver Sign Up Test", () => {
   beforeEach(() => {
     document.documentElement.innerHTML = html.toString();
     jest.resetModules();
-    require("./user-register.js");
+    require("./driver-register.js");
   });
   test.each([
     [

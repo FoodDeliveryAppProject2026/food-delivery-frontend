@@ -6,7 +6,7 @@ const fs = require("fs");
 const path = require("path");
 
 const html = fs.readFileSync(
-  path.resolve(__dirname, "../pages/vendor.html"),
+  path.resolve(__dirname, "./vendor.html"),
   "utf8"
 );
 
@@ -16,7 +16,7 @@ describe("Restaurant Menu Tests", () => {
 
     jest.resetModules();
 
-    require("../js/vendor.js");
+    require("./vendor.js");
   });
 
   test("Render dishes correctly", () => {

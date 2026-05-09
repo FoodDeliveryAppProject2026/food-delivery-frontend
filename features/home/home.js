@@ -111,3 +111,18 @@ document.addEventListener('DOMContentLoaded', () => {
   initFeatureRipple();
   initCTAButtons();
 });
+
+// ===================== INIT =====================
+renderReviews();
+initNavScroll();
+initSmoothAnchors();
+
+window.renderReviews = renderReviews;
+window.initNavScroll = initNavScroll;
+window.initSmoothAnchors = initSmoothAnchors;
+
+module.exports = {
+  renderReviews,
+  initNavScroll,
+  initSmoothAnchors,
+};

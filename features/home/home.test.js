@@ -29,7 +29,7 @@ global.IntersectionObserver = class {
     unobserve() {}
 };
 
-require("../js/home.js");
+require("./home.js");
 
 describe("Home Page Tests", () => {
 

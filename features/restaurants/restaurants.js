@@ -415,3 +415,10 @@ function showToast(msg) {
 
 // ===================== INIT =====================
 renderAll();
+
+module.exports = {
+  renderTopRestaurants,
+  renderAllRestaurants,
+  getFilteredRestaurants,
+  showToast,
+};

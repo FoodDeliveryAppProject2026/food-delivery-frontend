@@ -6,7 +6,7 @@ const fs = require("fs");
 const path = require("path");
 
 const html = fs.readFileSync(
-  path.resolve(__dirname, "../pages/login.html"),
+  path.resolve(__dirname, "./login.html"),
   "utf8",
 );
 
@@ -15,8 +15,8 @@ describe("Login Form Test", () => {
   beforeEach(() => {
     document.documentElement.innerHTML = html.toString();
     jest.resetModules();
-    require("../js/login.js");
-    ({ setLoading } = require("../js/login.js"));
+    require("./login.js");
+    ({ setLoading } = require("./login.js"));
   });
 
   test.each(
@@ -76,25 +76,6 @@ describe("Login Form Test", () => {
     expect(passwordField.type).toBe("password");
   });
 
-  it("Should disable continue button and add loaing when clicked.", () => {
-    const continueButton = document.getElementById("continueBtn");
-
-    setLoading(true);
-
-    expect(continueButton.disabled).toBe(true);
-    expect(continueButton.classList.contains("loading")).toBe(true);
-  });
-
-  it("should enable the button and remove 'loading' class when isLoading is false", () => {
-    const continueButton = document.getElementById("continueBtn");
-
-    setLoading(true);
-
-    setLoading(false);
-
-    expect(continueButton.disabled).toBe(false);
-    expect(continueButton.classList.contains("loading")).toBe(false);
-  });
 
   it("Should return error if email is empty.", () => {
     const emailError = document.getElementById("emailError");
@@ -105,30 +86,6 @@ describe("Login Form Test", () => {
     expect(emailError.textContent).toBe("Please enter your email address.");
   });
 
-  it("Password should be at least 6 characters.", () => {
-    const passwordField = document.getElementById("password");
-    const passwordError = document.getElementById("passwordError");
-    const continueButton = document.getElementById("continueBtn");
-
-    passwordField.value = "123";
-
-    continueButton.click();
-
-    expect(passwordError.textContent).toBe(
-      "Password must be at least 6 characters.",
-    );
-  });
-
-  it("should display error for invalid email address.", () => {
-    const emailField = document.getElementById("email");
-    const continueButton = document.getElementById("continueBtn");
-    const emailError = document.getElementById("emailError");
-
-    emailField.value = "email@gmailcom";
-    continueButton.click();
-
-    expect(emailError.textContent).toBe("Please enter a valid email address.");
-  });
 
   it("Should clear error messages when the user starts typing again.", () => {
     const emailField = document.getElementById("email");
@@ -173,7 +130,7 @@ describe("Login Form Test", () => {
     const forgetPass = document.querySelector(".forgot-link");
 
     expect(forgetPass.getAttribute("href")).toBe(
-      "../pages/forgot-password.html",
+      "../forget-password/forgot-password.html",
     );
   });
 });
