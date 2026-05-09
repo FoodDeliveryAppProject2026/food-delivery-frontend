@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HotMeal | Willy's Restaurant</title>
+    <link rel="stylesheet" href="vendor.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="navbar-logo">
+        <img
+          src="../../images/HOTMEAL-23 - 1.svg"
+          alt="App Logo"
+          class="logo-img"
+        />
+      </div>
+      <div class="nav-right">
+        <a href="../cart/cart.html" class="cart-btn" id="cartBtn">
+          🛒 <span class="cart-count" id="cartCount">0</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- RESTAURANT HERO -->
+    <div class="restaurant-hero">
+      <div class="hero-banner">
+        <img
+          src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&q=80"
+          alt="burger"
+          class="hero-burger-img"
+        />
+        <div class="hero-brand-tag">Fast Gourmet</div>
+      </div>
+      <div class="restaurant-info">
+        <div class="restaurant-logo-wrap">
+          <span class="rest-logo-text">Willy's</span>
+        </div>
+        <div class="restaurant-details">
+          <div class="rest-name-row">
+            <h1 class="rest-name">Willy's</h1>
+            <span class="online-badge">● ORDER ONLINE</span>
+          </div>
+          <div class="rest-meta">
+            <span>Burger</span> · <span>Made in Egypt</span>
+            <span class="stars">★★★★★</span>
+            <span class="rating-count">4.6 (58,341)</span>
+          </div>
+          <div class="rest-address">
+            5 El Narges Street, Off El Thawra Street (Delivery Only) · Dokki,
+            Dokki
+          </div>
+        </div>
+        <div class="rest-actions">
+          <button class="icon-btn">👥</button>
+          <button class="icon-btn">📞</button>
+        </div>
+      </div>
+
+      <div class="rest-tabs">
+        <button class="tab active">Menu</button>
+        <button class="tab">About</button>
+        <button class="tab">Reviews</button>
+        <div class="rest-stats">
+          <span>💳</span>
+          <span>🛵 90 mins</span>
+          <span>📋 51.3 EGP</span>
+          <span>🕐 08:00 AM – 10:15 PM</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN LAYOUT -->
+    <div class="main-layout">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <ul class="menu-nav" id="menuNav">
+          <li class="menu-nav-item active" data-cat="offers">Offers</li>
+          <li class="menu-nav-item" data-cat="top">Top Dishes</li>
+          <li class="menu-nav-item" data-cat="new">New Items</li>
+          <li class="menu-nav-item" data-cat="value">Value Meals</li>
+          <li class="menu-nav-item" data-cat="burgermeal">Burger Meals</li>
+          <li class="menu-nav-item" data-cat="burger">Burger</li>
+          <li class="menu-nav-item" data-cat="chickenmeal">Chicken Meals</li>
+          <li class="menu-nav-item" data-cat="chicken">Chicken</li>
+          <li class="menu-nav-item" data-cat="nachomeal">Nacho Meals</li>
+          <li class="menu-nav-item" data-cat="nacho">Nacho</li>
+          <li class="menu-nav-item" data-cat="sides">Sides</li>
+          <li class="menu-nav-item" data-cat="sauces">Sauces</li>
+          <li class="menu-nav-item" data-cat="desserts">Desserts</li>
+          <li class="menu-nav-item" data-cat="drinks">Drinks</li>
+        </ul>
+      </aside>
+
+      <!-- MENU CONTENT -->
+      <div class="menu-content">
+        <div class="menu-top-bar">
+          <div class="dish-search">
+            <input
+              type="text"
+              placeholder="Search for a dish..."
+              id="dishSearch"
+            />
+          </div>
+          <a href="#" class="scanned-menu-link">View Scanned Menu ▶</a>
+        </div>
+
+        <div class="delivery-box">
+          <div>
+            <span class="delivery-icon">🛵</span>
+            Delivers to <strong>Dokki Dokki</strong>
+          </div>
+          <button onclick="getLocation()" class="location-button">
+            <a class="scanned-menu-link" href="#">Change Address →</a>
+          </button>
+        </div>
+
+        <!-- Sections will be injected here -->
+        <div id="menuSections"></div>
+      </div>
+    </div>
+
+    <!-- ITEM MODAL -->
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal-card" id="modalCard">
+        <button class="modal-close" id="modalClose">✕</button>
+        <div class="modal-img-wrap">
+          <img id="modalImg" src="" alt="" />
+        </div>
+        <div class="modal-body">
+          <h2 id="modalName"></h2>
+          <p id="modalDesc"></p>
+          <div class="modal-meta">
+            <span id="modalLikes"></span>
+          </div>
+          <div class="modal-price-row">
+            <span class="modal-old-price" id="modalOldPrice"></span>
+            <span class="modal-price" id="modalPrice"></span>
+          </div>
+          <div class="modal-qty-row">
+            <button class="qty-btn" id="qtyMinus">−</button>
+            <span class="qty-val" id="qtyVal">1</span>
+            <button class="qty-btn" id="qtyPlus">+</button>
+          </div>
+          <button class="add-to-cart-btn" id="modalAddBtn">Add to Cart</button>
+          <button class="go-to-cart-btn" id="goToCartBtn">🛒 Go to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="navbar-logo">
+            <img
+              src="../../images/HOTMEAL-23 - 1.svg"
+              alt="App Logo"
+              class="logo-img"
+            />
+          </div>
+          <p>
+            High-speed delivery for the modern urban appetite. Bold flavors,
+            fast action.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="#">Restaurants</a>
+          <a href="#">Cuisines</a>
+          <a href="#">Deals</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="#">Help Center</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+        <div class="footer-col">
+          <h4>Follow Us</h4>
+          <div class="social-icons">
+            <a href="#"><i class="fa-solid fa-share-nodes"></i></a>
+            <a href="#"><i class="fa-solid fa-globe"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 HotMeal Velocity. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="vendor.js"></script>
+  </body>
+</html>
