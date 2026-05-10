@@ -316,7 +316,6 @@ cuisineTypeInput.addEventListener("input", () => {
 
 registerForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-
   hideAllErrors();
 
   const firstName = firstNameInput.value;
@@ -330,17 +329,44 @@ registerForm.addEventListener("submit", async (e) => {
   const businessType = businessTypeInput.value;
   const cuisineType = cuisineTypeInput.value;
 
-  const isValid = validate(
-    firstName,
-    lastName,
-    email,
-    phone,
-    password,
-    confirmPassword,
-    address,
-    storeName,
-    businessType,
-    cuisineType,
-  );
+  const isValid = validate(firstName, lastName, email, phone, password, confirmPassword, address, storeName, businessType, cuisineType);
   if (!isValid) return;
+
+  setLoading(true);
+
+  try {
+    const response = await fetch(`${BASE_URL}/auth/register`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email,
+        password,
+        phone_number: phone,
+        role: "Vendor",  // ← vendor role
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!data.success) {
+      showFieldError("email", data.message);
+      return;
+    }
+
+    // ✅ Save vendor details for after OTP verification
+    localStorage.setItem("pending_email", email);
+    localStorage.setItem("pending_first_name", firstName);
+    localStorage.setItem("pending_last_name", lastName);
+    localStorage.setItem("pending_store_name", storeName);
+    localStorage.setItem("pending_address", address);
+    localStorage.setItem("pending_business_type", businessType);
+    localStorage.setItem("pending_cuisine_type", cuisineType);
+
+    window.location.href = "../../verify-otp/verify-otp.html";
+
+  } catch (err) {
+    showFieldError("email", "Something went wrong. Please try again.");
+  } finally {
+    setLoading(false);
+  }
 });

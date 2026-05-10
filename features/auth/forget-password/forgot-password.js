@@ -66,11 +66,36 @@ emailInput.addEventListener("input", () => {
 
 forgotPassForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-
   hideAllErrors();
 
   const email = emailInput.value.trim();
 
   const isValid = validate(email);
   if (!isValid) return;
+
+  setLoading(true);
+
+  try {
+    const response = await fetch(`${BASE_URL}/auth/forgot-password`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    });
+
+    const data = await response.json();
+
+    if (!data.success) {
+      showFieldError("email", data.message);
+      return;
+    }
+
+    // ✅ OTP sent — go to reset password page
+    localStorage.setItem("reset_email", email);
+    window.location.href = "reset-password.html";
+
+  } catch (err) {
+    showFieldError("email", "Something went wrong. Please try again.");
+  } finally {
+    setLoading(false);
+  }
 });

@@ -219,7 +219,6 @@ phoneInput.addEventListener("input", () => {
 
 registerForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-
   hideAllErrors();
 
   const firstName = firstNameInput.value;
@@ -229,13 +228,40 @@ registerForm.addEventListener("submit", async (e) => {
   const password = passwordInput.value;
   const confirmPassword = confirmPasswordInput.value;
 
-  const isValid = validate(
-    firstName,
-    lastName,
-    email,
-    phone,
-    password,
-    confirmPassword,
-  );
+  const isValid = validate(firstName, lastName, email, phone, password, confirmPassword);
   if (!isValid) return;
+
+  setLoading(true);
+
+  try {
+    const response = await fetch(`${BASE_URL}/auth/register`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email,
+        password,
+        phone_number: phone,
+        role: "Customer",
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!data.success) {
+      showFieldError("email", data.message);
+      return;
+    }
+
+    // ✅ Save info for the profile creation step after OTP
+    localStorage.setItem("pending_email", email);
+    localStorage.setItem("pending_first_name", firstName);
+    localStorage.setItem("pending_last_name", lastName);
+
+    window.location.href = "../../verify-otp/verify-otp.html";
+
+  } catch (err) {
+    showFieldError("email", "Something went wrong. Please try again.");
+  } finally {
+    setLoading(false);
+  }
 });
