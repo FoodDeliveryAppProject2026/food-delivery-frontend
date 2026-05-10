@@ -1,18 +1,21 @@
 <!doctype html>
 <html lang="en">
- <head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HotMeal - Hungry? Discover the best in town.</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
     <link rel="stylesheet" href="./restaurants.css" />
-</head>
+  </head>
   <body>
     <!-- NAVBAR -->
     <nav class="navbar">
@@ -26,9 +29,6 @@
         </a>
       </div>
       <div class="nav-links">
-        <a href="../home/home.html" class="nav-link" data-page="explore"
-          >Home</a
-        >
         <a href="../cart/cart.html" class="cart-icon-link" title="Go to Cart">
           <i class="fa-solid fa-cart-shopping"></i>
           <span class="cart-badge" id="cartBadge">0</span>
@@ -101,16 +101,72 @@
     <!-- TOP RATED RESTAURANTS -->
     <section class="section" id="topRatedSection">
       <div class="section-header">
-        <h2>Top Rated Restaurants</h2>
+        <h2>Restaurants</h2>
       </div>
-      <div class="top-restaurants-grid" id="topRestaurantsGrid">
-        <!-- Injected by JS -->
+      <div class="features">
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-img">
+            <img
+              src="../../images/food-order.jpg"
+              alt="App Logo"
+              class="logo-img"
+            />
+          </div>
+          <div class="feature-card-body">
+            <h3>Burger Restaurants</h3>
+            <p>
+              Browse hundreds of restaurants and get hot food delivered straight
+              to your door in minutes.
+            </p>
+            <a href="../vendor/vendor.html" class="btn-feature"
+              >Go to Restaurant</a
+            >
+          </div>
+        </div>
+        <div class="feature-card animate-on-scroll" data-delay="100">
+          <div class="feature-img">
+            <img
+              src="../../images/resturant.jpg"
+              alt="App Logo"
+              class="logo-img"
+            />
+          </div>
+          <div class="feature-card-body">
+            <h3>Burger Restaurants</h3>
+            <p>
+              Partner with HotMeal and reach thousands of hungry customers in
+              your area every day.
+            </p>
+            <a href="../vendor/vendor.html" class="btn-feature"
+              >Go to Restaurant</a
+            >
+          </div>
+        </div>
+        <div class="feature-card animate-on-scroll" data-delay="200">
+          <div class="feature-img">
+            <img
+              src="../../images/driver.jpg"
+              alt="App Logo"
+              class="logo-img"
+            />
+          </div>
+          <div class="feature-card-body">
+            <h3>Burger Restaurants</h3>
+            <p>
+              Set your own hours and earn money delivering food near you. Join
+              the rider community today.
+            </p>
+            <a href="../vendor/vendor.html" class="btn-feature"
+              >Go to Restaurant</a
+            >
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ALL RESTAURANTS -->
     <section class="section" id="allRestaurantsSection">
-      <div class="section-header">
+      <!-- <div class="section-header">
         <h2>All Restaurants</h2>
         <div class="filter-sort">
           <button class="btn-filter" id="filterBtn">
@@ -125,10 +181,10 @@
             </select>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- Filter Panel -->
-      <div class="filter-panel hidden" id="filterPanel">
+      <!-- <div class="filter-panel hidden" id="filterPanel">
         <div class="filter-group">
           <label>Max Delivery Time</label>
           <div class="filter-options">
@@ -168,17 +224,17 @@
             </button>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div class="all-restaurants-grid" id="allRestaurantsGrid">
         <!-- Injected by JS -->
       </div>
 
-      <div class="show-more-wrap">
+      <!-- <div class="show-more-wrap">
         <button class="btn-show-more" id="showMoreBtn">
           Show More Restaurants
         </button>
-      </div>
+      </div> -->
     </section>
 
     <!-- NO RESULTS -->

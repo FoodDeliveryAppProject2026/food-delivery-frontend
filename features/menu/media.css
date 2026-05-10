@@ -1,0 +1,117 @@
+/* =======================
+   Tablet
+======================= */
+@media (max-width: 1200px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .search-box {
+    width: 280px;
+  }
+}
+
+/* =======================
+   Mobile
+======================= */
+@media (max-width: 992px) {
+  .sidebar {
+    left: -100%;
+  }
+
+  .sidebar.show {
+    left: 0;
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .topbar-actions {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* =======================
+   Small Mobile
+======================= */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 20px;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-header h1 {
+    font-size: 32px;
+  }
+
+  .food-card img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .topbar-actions {
+    gap: 10px;
+  }
+
+  .topbar-actions button {
+    flex: 1;
+    justify-content: center;
+    min-width: 120px;
+  }
+}
+
+/* =======================
+   Extra Small Devices
+======================= */
+@media (max-width: 500px) {
+  .sidebar {
+    width: 85%;
+  }
+
+  .food-card {
+    padding: 18px;
+  }
+
+  .food-card h3 {
+    font-size: 20px;
+  }
+
+  .food-bottom span {
+    font-size: 18px;
+  }
+
+  .food-bottom button {
+    padding: 10px 18px;
+  }
+
+  .topbar-actions button {
+    width: 100%;
+  }
+}
