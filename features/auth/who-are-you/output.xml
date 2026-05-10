@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.13.6 on win32)" generated="2026-05-10T03:52:37.264983" rpa="false" schemaversion="5">
+<suite id="s1" name="Who-Are-You Test" source="C:\Users\Lenovo\food-delivery-frontend\features\auth\who-are-you\who-are-you_test.robot">
+<kw name="Open Browser To Who Page" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-05-10T03:52:37.475964" level="INFO">Opening browser 'chrome' to base url 'file:///C:/Users/Lenovo/food-delivery-frontend/features/auth/who-are-you/who.html'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-05-10T03:52:37.475676" elapsed="1.652618"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-05-10T03:52:39.128607" elapsed="0.030988"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-05-10T03:52:41.161795" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-05-10T03:52:39.160189" elapsed="2.002090"/>
+</kw>
+<status status="PASS" start="2026-05-10T03:52:37.475005" elapsed="3.687708"/>
+</kw>
+<test id="s1-t1" name="Verify Page Title" line="15">
+<kw name="Title Should Be" owner="SeleniumLibrary">
+<msg time="2026-05-10T03:52:41.192972" level="INFO">Page title is 'Hot Meal'.</msg>
+<arg>Hot Meal</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<status status="PASS" start="2026-05-10T03:52:41.164711" elapsed="0.028736"/>
+</kw>
+<status status="PASS" start="2026-05-10T03:52:41.162966" elapsed="0.031992"/>
+</test>
+<test id="s1-t2" name="Verify Navbar Logo" line="18">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-05-10T03:52:41.266341" level="INFO">Element 'class=logo-img' is displayed.</msg>
+<arg>class=logo-img</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-05-10T03:52:41.198357" elapsed="0.068257"/>
+</kw>
+<status status="PASS" start="2026-05-10T03:52:41.197084" elapsed="0.070282"/>
+</test>
+<test id="s1-t3" name="Verify Hero Heading" line="21">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-05-10T03:52:41.340142" level="INFO">Element 'xpath=//h1[contains(text(),'Who are you ?')]' is displayed.</msg>
+<arg>xpath=//h1[contains(text(),'Who are you ?')]</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-05-10T03:52:41.269948" elapsed="0.070481"/>
+</kw>
+<status status="PASS" start="2026-05-10T03:52:41.268965" elapsed="0.072477"/>
+</test>
+<test id="s1-t4" name="Verify Hero Description" line="24">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-05-10T03:52:41.391158" level="INFO">Current page contains text 'Choose your role to get started with your Hot Meal journey.'.</msg>
+<arg>Choose your role to get started with your Hot Meal journey.</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-05-10T03:52:41.345299" elapsed="0.046047"/>
+</kw>
+<status status="PASS" start="2026-05-10T03:52:41.343973" elapsed="0.048061"/>
+</test>
+<test id="s1-t5" name="Verify Customer Card Visibility" line="27">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-05-10T03:52:41.431180" level="INFO">Element 'xpath=//h2[contains(text(),'CUSTOMER')]' is displayed.</msg>
+<arg>xpath=//h2[contains(text(),'CUSTOMER')]</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-05-10T03:52:41.394279" elapsed="0.037076"/>
+</kw>
+<status status="PASS" start="2026-05-10T03:52:41.393355" elapsed="0.042159"/>
+</test>
+<test id="s1-t6" name="Verify Customer Description" line="30">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-05-10T03:52:41.472317" level="INFO">Current page contains text 'Order delicious meals'.</msg>
+<arg>Order delicious meals</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-05-10T03:52:41.440791" elapsed="0.031766"/>
+</kw>
+<status status="PASS" start="2026-05-10T03:52:41.437539" elapsed="0.036458"/>
+</test>
+<test id="s1-t7" name="Verify Customer Select Button" line="33">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-05-10T03:52:41.521443" level="INFO">Element 'xpath=(//button[contains(text(),'SELECT')])[1]' is displayed.</msg>
+<arg>xpath=(//button[contains(text(),'SELECT')])[1]</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-05-10T03:52:41.477575" elapsed="0.044070"/>
+</kw>
+<status status="PASS" start="2026-05-10T03:52:41.476384" elapsed="0.045885"/>
+</test>
+<test id="s1-t8" name="Verify Vendor Card Visibility" line="36">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-05-10T03:52:41.569685" level="INFO">Element 'xpath=//h2[contains(text(),'VENDOR')]' is displayed.</msg>
+<arg>xpath=//h2[contains(text(),'VENDOR')]</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-05-10T03:52:41.524665" elapsed="0.045280"/>
+</kw>
+<status status="PASS" start="2026-05-10T03:52:41.523666" elapsed="0.046949"/>
+</test>
+<test id="s1-t9" name="Verify Vendor Description" line="39">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-05-10T03:52:41.603155" level="INFO">Current page contains text 'Manage your diner'.</msg>
+<arg>Manage your diner</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-05-10T03:52:41.573339" elapsed="0.029988"/>
+</kw>
+<status status="PASS" start="2026-05-10T03:52:41.572268" elapsed="0.031842"/>
+</test>
+<test id="s1-t10" name="Verify Vendor Select Button" line="42">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-05-10T03:52:41.668838" level="INFO">Element 'xpath=(//button[contains(text(),'SELECT')])[2]' is displayed.</msg>
+<arg>xpath=(//button[contains(text(),'SELECT')])[2]</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-05-10T03:52:41.606486" elapsed="0.062558"/>
+</kw>
+<status status="PASS" start="2026-05-10T03:52:41.605408" elapsed="0.064872"/>
+</test>
+<test id="s1-t11" name="Verify Driver Card Visibility" line="45">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-05-10T03:52:41.728116" level="INFO">Element 'xpath=//h2[contains(text(),'DRIVER')]' is displayed.</msg>
+<arg>xpath=//h2[contains(text(),'DRIVER')]</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-05-10T03:52:41.673300" elapsed="0.055105"/>
+</kw>
+<status status="PASS" start="2026-05-10T03:52:41.672038" elapsed="0.057433"/>
+</test>
+<test id="s1-t12" name="Verify Driver Description" line="48">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-05-10T03:52:41.771971" level="INFO">Current page contains text 'deliver hot comfort food'.</msg>
+<arg>deliver hot comfort food</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-05-10T03:52:41.732958" elapsed="0.039336"/>
+</kw>
+<status status="PASS" start="2026-05-10T03:52:41.731578" elapsed="0.041779"/>
+</test>
+<test id="s1-t13" name="Verify Driver Select Button" line="51">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-05-10T03:52:41.827565" level="INFO">Element 'xpath=(//button[contains(text(),'SELECT')])[3]' is displayed.</msg>
+<arg>xpath=(//button[contains(text(),'SELECT')])[3]</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-05-10T03:52:41.777139" elapsed="0.050727"/>
+</kw>
+<status status="PASS" start="2026-05-10T03:52:41.775452" elapsed="0.053390"/>
+</test>
+<test id="s1-t14" name="Verify Customer Button Navigation" line="54">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-05-10T03:52:41.834029" level="INFO">Clicking element 'xpath=(//button[contains(text(),'SELECT')])[1]'.</msg>
+<arg>xpath=(//button[contains(text(),'SELECT')])[1]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-10T03:52:41.833431" elapsed="0.383496"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-05-10T03:52:43.218762" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-05-10T03:52:42.217671" elapsed="1.001373"/>
+</kw>
+<status status="PASS" start="2026-05-10T03:52:41.832093" elapsed="1.387813"/>
+</test>
+<test id="s1-t15" name="Verify Vendor Button Navigation" line="58">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-05-10T03:52:43.223816" level="INFO">Opening url 'file:///C:/Users/Lenovo/food-delivery-frontend/features/auth/who-are-you/who.html'</msg>
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-05-10T03:52:43.223384" elapsed="0.061031"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-05-10T03:52:43.285456" level="INFO">Clicking element 'xpath=(//button[contains(text(),'SELECT')])[2]'.</msg>
+<arg>xpath=(//button[contains(text(),'SELECT')])[2]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-10T03:52:43.285115" elapsed="0.249819"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-05-10T03:52:44.538167" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-05-10T03:52:43.535969" elapsed="1.002449"/>
+</kw>
+<status status="PASS" start="2026-05-10T03:52:43.221306" elapsed="1.318073"/>
+</test>
+<test id="s1-t16" name="Verify Driver Button Navigation" line="63">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-05-10T03:52:44.541924" level="INFO">Opening url 'file:///C:/Users/Lenovo/food-delivery-frontend/features/auth/who-are-you/who.html'</msg>
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-05-10T03:52:44.541529" elapsed="0.021036"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-05-10T03:52:44.569280" level="INFO">Clicking element 'xpath=(//button[contains(text(),'SELECT')])[3]'.</msg>
+<arg>xpath=(//button[contains(text(),'SELECT')])[3]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-10T03:52:44.568620" elapsed="0.271584"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-05-10T03:52:45.842769" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-05-10T03:52:44.841464" elapsed="1.001563"/>
+</kw>
+<status status="PASS" start="2026-05-10T03:52:44.540405" elapsed="1.303667"/>
+</test>
+<test id="s1-t17" name="Verify Total Number Of Cards" line="68">
+<kw name="Get Element Count" owner="SeleniumLibrary">
+<msg time="2026-05-10T03:52:45.910696" level="INFO">${count} = 0</msg>
+<var>${count}</var>
+<arg>xpath=//div[contains(@class,'role-card')]</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<status status="PASS" start="2026-05-10T03:52:45.860457" elapsed="0.050427"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-05-10T03:52:45.913740" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg time="2026-05-10T03:52:45.914203" level="FAIL">0 != 3</msg>
+<arg>${count}</arg>
+<arg>3</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="FAIL" start="2026-05-10T03:52:45.912308" elapsed="0.002520">0 != 3</status>
+</kw>
+<status status="FAIL" start="2026-05-10T03:52:45.847948" elapsed="0.068952">0 != 3</status>
+</test>
+<test id="s1-t18" name="Verify Total Number Of Buttons" line="72">
+<kw name="Get Element Count" owner="SeleniumLibrary">
+<msg time="2026-05-10T03:52:45.956968" level="INFO">${btn_count} = 0</msg>
+<var>${btn_count}</var>
+<arg>xpath=//button[contains(@class,'select-btn')]</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<status status="PASS" start="2026-05-10T03:52:45.922549" elapsed="0.034561"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-05-10T03:52:45.959405" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg time="2026-05-10T03:52:45.959693" level="FAIL">0 != 3</msg>
+<arg>${btn_count}</arg>
+<arg>3</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="FAIL" start="2026-05-10T03:52:45.958386" elapsed="0.001573">0 != 3</status>
+</kw>
+<status status="FAIL" start="2026-05-10T03:52:45.921112" elapsed="0.039881">0 != 3</status>
+</test>
+<test id="s1-t19" name="Verify Icons Visibility" line="76">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-05-10T03:52:46.144992" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-15.png"&gt;&lt;img src="selenium-screenshot-15.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-05-10T03:52:46.145354" level="FAIL">Element with locator 'xpath=(//div[contains(@class,'icon-box')])[1]' not found.</msg>
+<arg>xpath=(//div[contains(@class,'icon-box')])[1]</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="FAIL" start="2026-05-10T03:52:45.967327" elapsed="0.184733">Element with locator 'xpath=(//div[contains(@class,'icon-box')])[1]' not found.</status>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<arg>xpath=(//div[contains(@class,'icon-box')])[2]</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="NOT RUN" start="2026-05-10T03:52:46.152897" elapsed="0.000097"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<arg>xpath=(//div[contains(@class,'icon-box')])[3]</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="NOT RUN" start="2026-05-10T03:52:46.153551" elapsed="0.000082"/>
+</kw>
+<status status="FAIL" start="2026-05-10T03:52:45.964817" elapsed="0.189434">Element with locator 'xpath=(//div[contains(@class,'icon-box')])[1]' not found.</status>
+</test>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-05-10T03:52:46.156851" elapsed="2.322743"/>
+</kw>
+<status status="FAIL" start="2026-05-10T03:52:37.266561" elapsed="11.213271"/>
+</suite>
+<statistics>
+<total>
+<stat pass="16" fail="3" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Who-Are-You Test" id="s1" pass="16" fail="3" skip="0">Who-Are-You Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
