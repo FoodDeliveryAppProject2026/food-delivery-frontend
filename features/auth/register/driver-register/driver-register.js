@@ -256,7 +256,7 @@ registerForm.addEventListener("submit", async (e) => {
     localStorage.setItem("pending_first_name", firstName);
     localStorage.setItem("pending_last_name", lastName);
 
-    window.location.href = "verify-otp.html";
+    window.location.href = "../../verify-otp/verify-otp.html";
 
   } catch (err) {
     showFieldError("email", "Something went wrong. Please try again.");

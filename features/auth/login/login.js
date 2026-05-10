@@ -122,7 +122,7 @@ loginForm.addEventListener("submit", async (e) => {
       sessionStorage.setItem("token", token);
     }
 
-    window.location.href = "home.html";
+    window.location.href = "../../home/home.html";
 
   } catch (err) {
     showFieldError("email", "Something went wrong. Please try again.");

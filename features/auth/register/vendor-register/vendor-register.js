@@ -362,7 +362,7 @@ registerForm.addEventListener("submit", async (e) => {
     localStorage.setItem("pending_business_type", businessType);
     localStorage.setItem("pending_cuisine_type", cuisineType);
 
-    window.location.href = "verify-otp.html";
+    window.location.href = "../../verify-otp/verify-otp.html";
 
   } catch (err) {
     showFieldError("email", "Something went wrong. Please try again.");
