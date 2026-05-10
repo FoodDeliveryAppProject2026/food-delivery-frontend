@@ -91,7 +91,6 @@ passInput.addEventListener("input", () => {
 
 loginForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-
   hideAllErrors();
 
   const email = emailInput.value.trim();
@@ -99,4 +98,35 @@ loginForm.addEventListener("submit", async (e) => {
 
   const isValid = validate(email, password);
   if (!isValid) return;
+
+  setLoading(true);
+
+  try {
+    const response = await fetch(`${BASE_URL}/auth/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await response.json();
+
+    if (!data.success) {
+      showFieldError("email", data.message);
+      return;
+    }
+
+    const token = data.data.token;
+    if (remember.checked) {
+      localStorage.setItem("token", token);
+    } else {
+      sessionStorage.setItem("token", token);
+    }
+
+    window.location.href = "home.html";
+
+  } catch (err) {
+    showFieldError("email", "Something went wrong. Please try again.");
+  } finally {
+    setLoading(false);
+  }
 });
