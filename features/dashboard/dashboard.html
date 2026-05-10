@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hot Meal Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@700;800&family=Work+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="./media.css" />
+    <link rel="stylesheet" href="./dashboard.css" />
+  </head>
+
+  <body>
+    <header class="topbar">
+      <div class="logo">
+        <a href="../home/home.html">
+          <img
+            src="../../images/HOTMEAL-23 - 1.svg"
+            alt="App Logo"
+            class="logo-img"
+          />
+        </a>
+      </div>
+
+      <div class="topbar-actions">
+        <button class="help-btn">
+          <i class="fa-solid fa-headset"></i>
+          Get Help
+        </button>
+
+        <button class="icon-btn">
+          <i class="fa-solid fa-bell"></i>
+        </button>
+
+        <button class="icon-btn">
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </button>
+      </div>
+    </header>
+
+    <div class="dashboard-layout">
+      <aside class="sidebar" id="sidebar">
+        <div class="restaurant-card">
+          <div>
+            <h2>Burger House</h2>
+            <p>Food Delivery Business</p>
+          </div>
+        </div>
+
+        <nav class="nav-links">
+          <a href="#" class="nav-item active">
+            <i class="fa-solid fa-house"></i>
+            <span>Dashboard</span>
+          </a>
+
+          <a href="../orders/orders.html" class="nav-item">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span>Orders</span>
+          </a>
+
+          <a href="#" class="nav-item">
+            <i class="fa-solid fa-store"></i>
+            <span>Stores</span>
+          </a>
+
+          <a href="#" class="nav-item">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Analytics</span>
+          </a>
+
+          <a href="#" class="nav-item">
+            <i class="fa-solid fa-users"></i>
+            <span>Customers</span>
+          </a>
+
+          <a href="#" class="nav-item">
+            <i class="fa-solid fa-bullhorn"></i>
+            <span>Marketing</span>
+          </a>
+
+          <a href="../menu/menu.html" class="nav-item">
+            <i class="fa-solid fa-utensils"></i>
+            Menu
+          </a>
+
+          <a href="#" class="nav-item">
+            <i class="fa-solid fa-gear"></i>
+            <span>Settings</span>
+          </a>
+        </nav>
+      </aside>
+
+      <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+      <main class="main-content">
+        <div class="mobile-header">
+          <button class="menu-btn" id="menuBtn">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+
+          <h2>Dashboard</h2>
+        </div>
+
+        <section class="hero-section">
+          <div>
+            <p class="welcome-text">Good Morning, Chris 👋</p>
+            <h1>Today's Summary</h1>
+          </div>
+
+          <button class="primary-btn">View Reports</button>
+        </section>
+
+        <section class="stats-grid">
+          <div class="stat-card">
+            <p>Total Sales</p>
+            <h3>$4,690.70</h3>
+            <span class="success">+15% this week</span>
+          </div>
+
+          <div class="stat-card">
+            <p>Total Orders</p>
+            <h3>1,240</h3>
+            <span class="danger">-3% this week</span>
+          </div>
+
+          <div class="stat-card">
+            <p>Average Ticket</p>
+            <h3>$23.45</h3>
+            <span class="success">+8% this week</span>
+          </div>
+        </section>
+
+        <section class="content-grid">
+          <div class="left-content">
+            <div class="section-title-row">
+              <h2>Top Opportunities</h2>
+            </div>
+
+            <div class="promo-card">
+              <div class="promo-image">
+                <i class="fa-solid fa-gift"></i>
+              </div>
+
+              <div>
+                <h3>Boost your store visibility with promotions</h3>
+                <p>
+                  Increase orders and attract more customers using special
+                  offers and featured ads.
+                </p>
+              </div>
+            </div>
+
+            <div class="sales-card">
+              <div class="sales-header">
+                <h2>Sales Overview</h2>
+                <button class="filter-btn">Last 30 Days</button>
+              </div>
+
+              <div class="sales-content">
+                <div class="sales-info">
+                  <div>
+                    <p>Sales</p>
+                    <h3>$4,690.70</h3>
+                  </div>
+
+                  <div>
+                    <p>Orders</p>
+                    <h3>1,240</h3>
+                  </div>
+                </div>
+
+                <div class="chart">
+                  <div class="chart-line blue"></div>
+                  <div class="chart-line gray"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="right-content">
+            <h2>Quick Actions</h2>
+
+            <div class="actions-list">
+              <div class="action-item">
+                <div>
+                  <i class="fa-solid fa-bolt"></i>
+                  <span>Boost Store</span>
+                </div>
+                <i class="fa-solid fa-chevron-right"></i>
+              </div>
+
+              <div class="action-item">
+                <div>
+                  <i class="fa-solid fa-ticket"></i>
+                  <span>Run Promotion</span>
+                </div>
+                <i class="fa-solid fa-chevron-right"></i>
+              </div>
+
+              <div class="action-item">
+                <div>
+                  <i class="fa-solid fa-pen"></i>
+                  <span>Edit Menu</span>
+                </div>
+                <i class="fa-solid fa-chevron-right"></i>
+              </div>
+
+              <div class="action-item">
+                <div>
+                  <i class="fa-regular fa-clock"></i>
+                  <span>Store Hours</span>
+                </div>
+                <i class="fa-solid fa-chevron-right"></i>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./dashboard.js"></script>
+  </body>
+</html>

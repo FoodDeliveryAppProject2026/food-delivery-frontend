@@ -1,0 +1,292 @@
+# index.html ```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Delivery - Menu</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="./media.css" />
+    <link rel="stylesheet" href="./menu.css" />
+  </head>
+  <body>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="dashboard-layout">
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="logo-box">
+          <div class="logo-icon">
+            <i class="fa-solid fa-burger"></i>
+          </div>
+          <div>
+            <h2>Foodie Hunter</h2>
+            <p>Admin Panel</p>
+          </div>
+        </div>
+
+        <nav class="sidebar-menu">
+          <a href="../dashboard/dashboard.html">
+            <i class="fa-solid fa-chart-line"></i>
+            Dashboard
+          </a>
+
+          <a href="../orders/orders.html">
+            <i class="fa-solid fa-bag-shopping"></i>
+            Orders
+          </a>
+
+          <a href="#">
+            <i class="fa-solid fa-store"></i>
+            Stores
+          </a>
+
+          <a href="#">
+            <i class="fa-solid fa-chart-pie"></i>
+            Analytics
+          </a>
+
+          <a href="#">
+            <i class="fa-solid fa-users"></i>
+            Customers
+          </a>
+
+          <a href="#">
+            <i class="fa-solid fa-bullhorn"></i>
+            Marketing
+          </a>
+
+          <a href="../menu/menu.html" class="active">
+            <i class="fa-solid fa-utensils"></i>
+            Menu
+          </a>
+
+          <a href="#">
+            <i class="fa-solid fa-gear"></i>
+            Settings
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Header -->
+        <header class="topbar">
+          <div class="left-topbar">
+            <button class="menu-toggle" id="menuToggle">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="search-box">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" placeholder="Search food..." />
+            </div>
+          </div>
+
+          <div class="topbar-actions">
+            <button>
+              <i class="fa-solid fa-tag"></i>
+              Offers
+            </button>
+
+            <button>
+              <i class="fa-solid fa-cart-shopping"></i>
+              4 Items
+            </button>
+
+            <button>
+              <i class="fa-solid fa-user"></i>
+              Account
+            </button>
+          </div>
+        </header>
+
+        <!-- Title -->
+        <div class="page-header">
+          <div>
+            <h1>Restaurant Menu</h1>
+            <p>Manage your delicious meals and menu items.</p>
+          </div>
+
+          <button class="add-btn">
+            <i class="fa-solid fa-plus"></i>
+            Add New Item
+          </button>
+        </div>
+
+        <!-- Menu Grid -->
+        <section class="menu-grid">
+          <div class="food-card">
+            <div class="food-top">
+              <span class="rating">
+                <i class="fa-solid fa-star"></i>
+                4.8
+              </span>
+
+              <button class="favorite-btn">
+                <i class="fa-regular fa-heart"></i>
+              </button>
+            </div>
+
+            <img
+              src="https://images.unsplash.com/photo-1563379091339-03246963d96c?q=80&w=800&auto=format&fit=crop"
+              alt="Burger"
+            />
+
+            <h3>Classic Burger</h3>
+            <p class="desc">Cheese, beef, lettuce & fresh sauce.</p>
+
+            <div class="food-bottom">
+              <span>$13</span>
+              <button>Add</button>
+            </div>
+          </div>
+
+          <div class="food-card">
+            <div class="food-top">
+              <span class="rating">
+                <i class="fa-solid fa-star"></i>
+                4.7
+              </span>
+
+              <button class="favorite-btn">
+                <i class="fa-regular fa-heart"></i>
+              </button>
+            </div>
+
+            <img
+              src="https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=800&auto=format&fit=crop"
+              alt="Pizza"
+            />
+
+            <h3>Italian Pizza</h3>
+            <p class="desc">Loaded with mozzarella and pepperoni.</p>
+
+            <div class="food-bottom">
+              <span>$18</span>
+              <button>Add</button>
+            </div>
+          </div>
+
+          <div class="food-card">
+            <div class="food-top">
+              <span class="rating">
+                <i class="fa-solid fa-star"></i>
+                4.9
+              </span>
+
+              <button class="favorite-btn">
+                <i class="fa-regular fa-heart"></i>
+              </button>
+            </div>
+
+            <img
+              src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=800&auto=format&fit=crop"
+              alt="Pasta"
+            />
+
+            <h3>Creamy Pasta</h3>
+            <p class="desc">Fresh pasta with creamy white sauce.</p>
+
+            <div class="food-bottom">
+              <span>$16</span>
+              <button>Add</button>
+            </div>
+          </div>
+
+          <div class="food-card">
+            <div class="food-top">
+              <span class="rating">
+                <i class="fa-solid fa-star"></i>
+                4.5
+              </span>
+
+              <button class="favorite-btn">
+                <i class="fa-regular fa-heart"></i>
+              </button>
+            </div>
+
+            <img
+              src="https://images.unsplash.com/photo-1562967914-608f82629710?q=80&w=800&auto=format&fit=crop"
+              alt="Fried Chicken"
+            />
+
+            <h3>Fried Chicken</h3>
+            <p class="desc">Crispy spicy chicken with french fries.</p>
+
+            <div class="food-bottom">
+              <span>$21</span>
+              <button>Add</button>
+            </div>
+          </div>
+
+          <div class="food-card">
+            <div class="food-top">
+              <span class="rating">
+                <i class="fa-solid fa-star"></i>
+                4.6
+              </span>
+
+              <button class="favorite-btn">
+                <i class="fa-regular fa-heart"></i>
+              </button>
+            </div>
+
+            <img
+              src="https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=800&auto=format&fit=crop"
+              alt="Salad"
+            />
+
+            <h3>Healthy Salad</h3>
+            <p class="desc">Fresh vegetables with healthy dressing.</p>
+
+            <div class="food-bottom">
+              <span>$11</span>
+              <button>Add</button>
+            </div>
+          </div>
+
+          <div class="food-card">
+            <div class="food-top">
+              <span class="rating">
+                <i class="fa-solid fa-star"></i>
+                4.9
+              </span>
+
+              <button class="favorite-btn">
+                <i class="fa-regular fa-heart"></i>
+              </button>
+            </div>
+
+            <img
+              src="https://images.unsplash.com/photo-1628294895950-9805252327bc?q=80&w=800&auto=format&fit=crop"
+              alt="Dessert"
+            />
+
+            <h3>Chocolate Cake</h3>
+            <p class="desc">Soft chocolate cake with creamy topping.</p>
+
+            <div class="food-bottom">
+              <span>$9</span>
+              <button>Add</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./menu.js"></script>
+  </body>
+</html>

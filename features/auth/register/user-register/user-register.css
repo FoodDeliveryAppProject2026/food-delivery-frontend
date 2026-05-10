@@ -358,7 +358,6 @@ body {
 .signup-link {
   font-size: 1rem;
   font-weight: 400;
-  font-style: italic;
   color: var(--dark);
   text-decoration: none;
   transition: color 0.2s;
