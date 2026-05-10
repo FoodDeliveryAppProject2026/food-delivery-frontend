@@ -1,24 +1,39 @@
+const login = document.getElementById("login");
+const register = document.getElementById("register");
+const logout = document.getElementById("logout");
+const token = localStorage.getItem("token");
+
+if (token) {
+  login.classList.add("hide");
+  register.classList.add("hide");
+  logout.classList.add("show");
+} else {
+  login.classList.add("show");
+  register.classList.add("show");
+  logout.classList.add("hide");
+}
+
 const reviewsData = [
   {
     text: '"Found my favourite restaurant on HotMeal. Delivered in 25 minutes."',
-    name: 'Ahmed, Cairo',
-    avatarColor: '#CC0000',
+    name: "Ahmed, Cairo",
+    avatarColor: "#CC0000",
   },
   {
     text: '"I order my groceries and lunch at the same time. So convenient."',
-    name: 'Mariam, Alexandria',
-    avatarColor: '#F0B429',
+    name: "Mariam, Alexandria",
+    avatarColor: "#F0B429",
   },
   {
     text: '"Late night cravings sorted. HotMeal never lets me down."',
-    name: 'Omar, Portsaid',
-    avatarColor: '#F26B3A',
+    name: "Omar, Portsaid",
+    avatarColor: "#F26B3A",
   },
 ];
 
 /* ── RENDER REVIEWS ─────────────────────── */
 function renderReviews() {
-  const grid = document.getElementById('reviewsGrid');
+  const grid = document.getElementById("reviewsGrid");
   if (!grid) return;
 
   grid.innerHTML = reviewsData
@@ -30,9 +45,9 @@ function renderReviews() {
         <div class="review-avatar" style="background:${r.avatarColor}"></div>
         <span class="review-name">— ${r.name}</span>
       </div>
-    </div>`
+    </div>`,
     )
-    .join('');
+    .join("");
 
   // Re-observe newly added cards
   observeAnimatedElements();
@@ -42,7 +57,9 @@ function renderReviews() {
 let observer;
 
 function observeAnimatedElements() {
-  const elements = document.querySelectorAll('.animate-on-scroll:not(.observed)');
+  const elements = document.querySelectorAll(
+    ".animate-on-scroll:not(.observed)",
+  );
 
   if (!observer) {
     observer = new IntersectionObserver(
@@ -51,58 +68,56 @@ function observeAnimatedElements() {
           if (entry.isIntersecting) {
             const el = entry.target;
             const delay = el.dataset.delay ? parseInt(el.dataset.delay) : 0;
-            setTimeout(() => el.classList.add('visible'), delay);
+            setTimeout(() => el.classList.add("visible"), delay);
             observer.unobserve(el);
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.15 },
     );
   }
 
   elements.forEach((el) => {
-    el.classList.add('observed');
+    el.classList.add("observed");
     observer.observe(el);
   });
 }
 
 /* ── NAV SCROLL SHRINK ──────────────────── */
 function initNavScroll() {
-  const navbar = document.getElementById('navbar');
+  const navbar = document.getElementById("navbar");
   if (!navbar) return;
 
   window.addEventListener(
-    'scroll',
+    "scroll",
     () => {
       if (window.scrollY > 60) {
-        navbar.classList.add('scrolled');
+        navbar.classList.add("scrolled");
       } else {
-        navbar.classList.remove('scrolled');
+        navbar.classList.remove("scrolled");
       }
     },
-    { passive: true }
+    { passive: true },
   );
 }
-
 
 /* ── SMOOTH ANCHOR SCROLLING ────────────── */
 function initSmoothAnchors() {
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', (e) => {
-      const targetId = anchor.getAttribute('href').slice(1);
+    anchor.addEventListener("click", (e) => {
+      const targetId = anchor.getAttribute("href").slice(1);
       if (!targetId) return;
       const target = document.getElementById(targetId);
       if (target) {
         e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     });
   });
 }
 
-
 /* ── INIT ───────────────────────────────── */
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   renderReviews();
   observeAnimatedElements();
   initNavScroll();

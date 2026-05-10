@@ -53,6 +53,14 @@ body {
   background: var(--cream-dark);
 }
 
+.show {
+  display: block !important;
+}
+
+.hide {
+  display: none !important;
+}
+
 .btn-black {
   padding: 8px 20px;
   background: var(--black);

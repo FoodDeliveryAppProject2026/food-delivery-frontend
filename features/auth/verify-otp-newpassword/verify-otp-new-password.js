@@ -66,9 +66,14 @@ forgotPassForm.addEventListener("submit", async (e) => {
 
   setLoading(true);
 
+  localStorage.setItem("reset_otp", otp);
+
   try {
     // get the email that was saved during registration
-    const email = localStorage.getItem("pending_email");
+    // works for both registration and forgot-password flows
+    const email =
+      localStorage.getItem("pending_email") ||
+      localStorage.getItem("reset_email");
 
     const response = await fetch(`${BASE_URL}/auth/verify-otp`, {
       method: "POST",
@@ -80,6 +85,7 @@ forgotPassForm.addEventListener("submit", async (e) => {
 
     if (!data.success) {
       showFieldError("email", data.message);
+      localStorage.removeItem("reset_otp"); // ❌ remove if failed
       return;
     }
 
@@ -90,9 +96,13 @@ forgotPassForm.addEventListener("submit", async (e) => {
     // ✅ Clean up pending email
     localStorage.removeItem("pending_email");
 
-    // ✅ Go to login page
-    window.location.href = "../login/login.js";
+    const flow = localStorage.getItem("otp_flow");
 
+    if (flow === "forgot-password") {
+      window.location.href = "../login/login.html";
+    } else {
+      window.location.href = "../new-password/new-password.html";
+    }
   } catch (err) {
     showFieldError("email", "Something went wrong. Please try again.");
   } finally {

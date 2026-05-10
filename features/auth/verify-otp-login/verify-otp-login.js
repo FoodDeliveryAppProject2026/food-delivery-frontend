@@ -10,12 +10,6 @@ const emailError = document.getElementById("emailError");
 // Btn
 const continueBtn = document.getElementById("continueBtn");
 
-// Check if email is valid by using regex
-function isEmailValid(email) {
-  const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return pattern.test(email);
-}
-
 // Show error under a specific field
 function showFieldError(field, message) {
   if (field === "email") {
@@ -44,10 +38,7 @@ function validate(email) {
   let valid = true;
 
   if (!email) {
-    showFieldError("email", "Please enter your email address.");
-    valid = false;
-  } else if (!isEmailValid(email)) {
-    showFieldError("email", "Please enter a valid email address.");
+    showFieldError("email", "Please enter your code.");
     valid = false;
   }
 
@@ -68,18 +59,21 @@ forgotPassForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   hideAllErrors();
 
-  const email = emailInput.value.trim();
+  const otp = emailInput.value.trim(); // this is actually the OTP code
 
-  const isValid = validate(email);
+  const isValid = validate(otp);
   if (!isValid) return;
 
   setLoading(true);
 
   try {
-    const response = await fetch(`${BASE_URL}/auth/forgot-password`, {
+    // get the email that was saved during registration
+    const email = localStorage.getItem("pending_email");
+
+    const response = await fetch(`${BASE_URL}/auth/verify-otp`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ email, otp }),
     });
 
     const data = await response.json();
@@ -89,11 +83,15 @@ forgotPassForm.addEventListener("submit", async (e) => {
       return;
     }
 
-    // ✅ OTP sent — go to reset password page
-    localStorage.setItem("reset_email", email);
-    localStorage.setItem("otp_flow", "forgot-password"); // ← must be here
-    window.location.href =
-      "../verify-otp-newpassword/verify-otp-new-password.html";
+    // ✅ OTP verified — save token
+    const token = data.data.token;
+    localStorage.setItem("token", token);
+
+    // ✅ Clean up pending email
+    localStorage.removeItem("pending_email");
+
+    // ✅ Go to login page
+    window.location.href = "../login/login.html";
   } catch (err) {
     showFieldError("email", "Something went wrong. Please try again.");
   } finally {
