@@ -11,11 +11,8 @@ const passwordError = document.getElementById("passwordError");
 
 // Btn
 const continueBtn = document.getElementById("continueBtn");
-const googleBtn = document.getElementById("googleBtn");
-const remember = document.getElementById("remember");
-const btnLabel = document.getElementById("btnLabel");
-const btnSpinner = document.getElementById("btnSpinner");
 const eyeToggle = document.getElementById("eyeToggle");
+const remember = document.getElementById("remember");
 
 // Show error under a specific field
 function showFieldError(field, message) {
@@ -31,7 +28,7 @@ function showFieldError(field, message) {
   }
 }
 
-//  Hide error under a specific field
+// Hide error under a specific field
 function hideFieldError(field) {
   if (field === "email") {
     emailError.classList.remove("show");
@@ -50,21 +47,10 @@ function hideAllErrors() {
   hideFieldError("password");
 }
 
-// Shows error under the right field
-// Returns true if everything is valid
 function validate(email, password) {
   let valid = true;
-
-  if (!email) {
-    showFieldError("email", "Please enter your email address.");
-    valid = false;
-  }
-
-  if (!password) {
-    showFieldError("password", "Please enter your password.");
-    valid = false;
-  }
-
+  if (!email) { showFieldError("email", "Please enter your email address."); valid = false; }
+  if (!password) { showFieldError("password", "Please enter your password."); valid = false; }
   return valid;
 }
 
@@ -73,24 +59,23 @@ function setLoading(isLoading) {
   continueBtn.classList.toggle("loading", isLoading);
 }
 
-eyeToggle.addEventListener("click", () => {
-  const isHidden = passInput.type === "password";
-  passInput.type = isHidden ? "text" : "password";
-  eyeToggle.classList.toggle("visible", isHidden);
-});
+// Eye toggle
+if (eyeToggle) {
+  eyeToggle.addEventListener("click", () => {
+    const isHidden = passInput.type === "password";
+    passInput.type = isHidden ? "text" : "password";
+    eyeToggle.classList.toggle("visible", isHidden);
+  });
+}
 
-//Clear email error as user types in email field
-emailInput.addEventListener("input", () => {
-  hideFieldError("email");
-});
+// Clear errors on input
+emailInput.addEventListener("input", () => hideFieldError("email"));
+passInput.addEventListener("input", () => hideFieldError("password"));
 
-// Clear password error as user types in password field
-passInput.addEventListener("input", () => {
-  hideFieldError("password");
-});
-
+// Submit
 loginForm.addEventListener("submit", async (e) => {
   e.preventDefault();
+  console.log("login submitted"); // ← debug
   hideAllErrors();
 
   const email = emailInput.value.trim();
@@ -116,17 +101,38 @@ loginForm.addEventListener("submit", async (e) => {
     }
 
     const token = data.data.token;
-    if (remember.checked) {
+
+    // ✅ Save token based on remember me checkbox
+    if (remember && remember.checked) {
       localStorage.setItem("token", token);
     } else {
-      sessionStorage.setItem("token", token);
+      localStorage.setItem("token", token); // save anyway
     }
 
     window.location.href = "../../home/home.html";
 
   } catch (err) {
+    console.error(err);
     showFieldError("email", "Something went wrong. Please try again.");
   } finally {
     setLoading(false);
   }
 });
+
+// "Forget Password" link
+document.querySelector(".forgot-link").addEventListener("click", (e) => {
+  e.preventDefault();
+  window.parent.postMessage({ closeModal: "signInModal" }, "*");
+  window.parent.postMessage({ openModal: "forgotModal" }, "*");
+});
+
+// "New To Hot Meal? Sign Up →" link
+document.querySelector(".signup-link").addEventListener("click", (e) => {
+  e.preventDefault();
+  window.parent.postMessage({ closeModal: "signInModal" }, "*");
+  window.parent.postMessage({ openModal: "signUpModal" }, "*");
+});
+
+if (window.self !== window.top) {
+  document.body.classList.add("in-modal");
+}

@@ -1,3 +1,7 @@
+if (window.self !== window.top) {
+  document.body.classList.add("in-modal");
+}
+
 // Form
 const registerForm = document.getElementById("registerForm");
 
@@ -19,14 +23,9 @@ const phoneError = document.getElementById("phoneError");
 
 // Btn
 const continueBtn = document.getElementById("continueBtn");
-const googleBtn = document.getElementById("googleBtn");
-const remember = document.getElementById("remember");
-const btnLabel = document.getElementById("btnLabel");
-const btnSpinner = document.getElementById("btnSpinner");
 const eyeToggle = document.getElementById("eyeToggle");
 const confirmEyeToggle = document.getElementById("confirmEyeToggle");
 
-// Check if email is valid by using regex
 function isEmailValid(email) {
   const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return pattern.test(email);
@@ -37,7 +36,6 @@ function isPhoneValid(phone) {
   return pattern.test(phone);
 }
 
-// Show error under a specific field
 function showFieldError(field, message) {
   if (field === "firstName") {
     firstNameError.textContent = message;
@@ -71,7 +69,6 @@ function showFieldError(field, message) {
   }
 }
 
-//  Hide error under a specific field
 function hideFieldError(field) {
   if (field === "firstName") {
     firstNameError.textContent = "";
@@ -114,8 +111,6 @@ function hideAllErrors() {
   hideFieldError("confirmPassword");
 }
 
-// Shows error under the right field
-// Returns true if everything is valid
 function validate(
   firstName,
   lastName,
@@ -125,17 +120,14 @@ function validate(
   confirmPassword,
 ) {
   let valid = true;
-
   if (!firstName) {
     showFieldError("firstName", "First name is required.");
     valid = false;
   }
-
   if (!lastName) {
     showFieldError("lastName", "Last name is required.");
     valid = false;
   }
-
   if (!email) {
     showFieldError("email", "Please enter your email address.");
     valid = false;
@@ -143,7 +135,6 @@ function validate(
     showFieldError("email", "Please enter a valid email address.");
     valid = false;
   }
-
   if (!phone) {
     showFieldError("phone", "Please enter your phone number.");
     valid = false;
@@ -151,23 +142,23 @@ function validate(
     showFieldError("phone", "Please enter a valid phone number.");
     valid = false;
   }
-
   if (!password) {
     showFieldError("password", "Please enter your password.");
     valid = false;
-  } else if (password.length < 6) {
-    showFieldError("password", "Password must be at least 6 characters.");
-    valid = false;
+  // } else if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])/.test(password)) {
+  //   showFieldError(
+  //     "password",
+  //     "Password must contain uppercase, lowercase, number and special character.",
+  //   );
+  //   valid = false;
   }
-
   if (!confirmPassword) {
     showFieldError("confirmPassword", "You need to confirm your password.");
     valid = false;
   } else if (confirmPassword !== password) {
-    showFieldError("confirmPassword", "password doesn't match.");
+    showFieldError("confirmPassword", "Passwords don't match.");
     valid = false;
   }
-
   return valid;
 }
 
@@ -176,59 +167,54 @@ function setLoading(isLoading) {
   continueBtn.classList.toggle("loading", isLoading);
 }
 
-eyeToggle.addEventListener("click", () => {
-  const isHidden = passwordInput.type === "password";
-  passwordInput.type = isHidden ? "text" : "password";
-  eyeToggle.classList.toggle("visible", isHidden);
-});
+// Eye toggles
+if (eyeToggle) {
+  eyeToggle.addEventListener("click", () => {
+    const isHidden = passwordInput.type === "password";
+    passwordInput.type = isHidden ? "text" : "password";
+    eyeToggle.classList.toggle("visible", isHidden);
+  });
+}
 
-confirmEyeToggle.addEventListener("click", () => {
-  const isHidden = confirmPasswordInput.type === "password";
-  confirmPasswordInput.type = isHidden ? "text" : "password";
-  confirmEyeToggle.classList.toggle("visible", isHidden);
-});
+if (confirmEyeToggle) {
+  confirmEyeToggle.addEventListener("click", () => {
+    const isHidden = confirmPasswordInput.type === "password";
+    confirmPasswordInput.type = isHidden ? "text" : "password";
+    confirmEyeToggle.classList.toggle("visible", isHidden);
+  });
+}
 
-firstNameInput.addEventListener("input", () => {
-  hideFieldError("firstName");
-});
+// Clear errors on input
+firstNameInput.addEventListener("input", () => hideFieldError("firstName"));
+lastNameInput.addEventListener("input", () => hideFieldError("lastName"));
+emailInput.addEventListener("input", () => hideFieldError("email"));
+passwordInput.addEventListener("input", () => hideFieldError("password"));
+confirmPasswordInput.addEventListener("input", () =>
+  hideFieldError("confirmPassword"),
+);
+phoneInput.addEventListener("input", () => hideFieldError("phone"));
 
-//Clear last name error as user types in last name field
-lastNameInput.addEventListener("input", () => {
-  hideFieldError("lastName");
-});
-
-//Clear email error as user types in email field
-emailInput.addEventListener("input", () => {
-  hideFieldError("email");
-});
-
-// Clear password error as user types in password field
-passwordInput.addEventListener("input", () => {
-  hideFieldError("password");
-});
-
-// Clear confirm password error as user types in confirm password field
-confirmPasswordInput.addEventListener("input", () => {
-  hideFieldError("confirmPassword");
-});
-
-// Clear phone error as user types in phone field
-phoneInput.addEventListener("input", () => {
-  hideFieldError("phone");
-});
-
+// Submit
 registerForm.addEventListener("submit", async (e) => {
   e.preventDefault();
+  console.log("form submitted"); // ← debug
   hideAllErrors();
 
-  const firstName = firstNameInput.value;
-  const lastName = lastNameInput.value;
+  const firstName = firstNameInput.value.trim();
+  const lastName = lastNameInput.value.trim();
   const email = emailInput.value.trim();
-  const phone = phoneInput.value;
+  const phone = phoneInput.value.trim();
   const password = passwordInput.value;
   const confirmPassword = confirmPasswordInput.value;
 
-  const isValid = validate(firstName, lastName, email, phone, password, confirmPassword);
+  const isValid = validate(
+    firstName,
+    lastName,
+    email,
+    phone,
+    password,
+    confirmPassword,
+  );
   if (!isValid) return;
 
   setLoading(true);
@@ -252,16 +238,29 @@ registerForm.addEventListener("submit", async (e) => {
       return;
     }
 
-    // ✅ Save info for the profile creation step after OTP
     localStorage.setItem("pending_email", email);
     localStorage.setItem("pending_first_name", firstName);
     localStorage.setItem("pending_last_name", lastName);
 
-    window.location.href = "../../verify-otp/verify-otp.html";
-
+    if (window.self !== window.top) {
+      window.parent.postMessage({ closeModal: "userRegisterModal" },  "*");
+      window.parent.postMessage({ openModal: "otpModal" }, "*");
+    } else {
+     window.location.href = "../../verify-otp/verify-otp.html";
+    }
+    
   } catch (err) {
+    console.error(err);
     showFieldError("email", "Something went wrong. Please try again.");
   } finally {
     setLoading(false);
   }
 });
+
+// "Already have an account? Sign in →"
+document.querySelector(".signup-link").addEventListener("click", (e) => {
+  e.preventDefault();
+  window.parent.postMessage({ closeModal: "userRegisterModal" }, "*");
+  window.parent.postMessage({ openModal: "signInModal" }, "*");
+});
+

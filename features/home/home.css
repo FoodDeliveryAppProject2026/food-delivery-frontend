@@ -37,6 +37,7 @@ body {
 
 .btn-white {
   padding: 8px 20px;
+  border: none;
   border-radius: var(--radius);
   color: var(--black);
   background: var(--white);
@@ -51,6 +52,14 @@ body {
 }
 .btn-white:hover {
   background: var(--cream-dark);
+}
+
+.show {
+  display: inline-flex !important;
+}
+
+.hide {
+  display: none !important;
 }
 
 .btn-black {

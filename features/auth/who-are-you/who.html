@@ -47,10 +47,7 @@
 
           <h2>CUSTOMER</h2>
 
-          <p>
-            Order delicious meals from your favorite local diners and roadside
-            icons.
-          </p>
+          <p>Order delicious meals from your favorite local diners.</p>
 
           <a href="../register/user-register/user-register.html">
             <button class="select-btn" data-role="Customer">SELECT</button>
@@ -89,6 +86,38 @@
           </a>
         </div>
       </section>
-    <script src="./who.js"></script>
+    </div>
+
+    <script>
+      if (window.self !== window.top) {
+        document.body.classList.add("in-modal");
+      }
+      // CUSTOMER → open user register modal
+      document
+        .querySelectorAll(".select-btn")[0]
+        .addEventListener("click", (e) => {
+          e.preventDefault();
+          window.parent.postMessage({ closeModal: "signUpModal" }, "*");
+          window.parent.postMessage({ openModal: "userRegisterModal" }, "*");
+        });
+
+      // VENDOR → open vendor register modal
+      document
+        .querySelectorAll(".select-btn")[1]
+        .addEventListener("click", (e) => {
+          e.preventDefault();
+          window.parent.postMessage({ closeModal: "signUpModal" }, "*");
+          window.parent.postMessage({ openModal: "vendorRegisterModal" }, "*");
+        });
+
+      // DRIVER → open driver register modal
+      document
+        .querySelectorAll(".select-btn")[2]
+        .addEventListener("click", (e) => {
+          e.preventDefault();
+          window.parent.postMessage({ closeModal: "signUpModal" }, "*");
+          window.parent.postMessage({ openModal: "driverRegisterModal" }, "*");
+        });
+    </script>
   </body>
 </html>

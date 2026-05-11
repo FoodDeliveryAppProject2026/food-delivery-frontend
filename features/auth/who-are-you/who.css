@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
 
 * {
   margin: 0;
@@ -8,7 +8,7 @@
 
 body {
   font-family: "Plus Jakarta Sans", sans-serif;
-  background: #fef3e2; 
+  background: #fef3e2;
   color: #1d0d0d;
 }
 
@@ -37,7 +37,7 @@ button {
   color: white;
   display: flex;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
   padding: 0 20px;
   position: sticky;
   top: 0;
@@ -82,7 +82,7 @@ button {
 
 .role-card {
   background: #fff;
-  border: 2px solid #1d0d0d; 
+  border: 2px solid #1d0d0d;
   border-radius: 12px;
   padding: 40px 25px;
   text-align: center;
@@ -121,7 +121,7 @@ button {
 }
 
 .select-btn {
-  background: #dd0303; 
+  background: #dd0303;
   color: white;
   padding: 12px 40px;
   border-radius: 8px;
@@ -144,4 +144,63 @@ button {
   .hero h1 {
     font-size: 2.5rem;
   }
+}
+
+body.in-modal .navbar {
+  display: none;
+}
+
+body.in-modal .container {
+  padding-bottom: 24px;
+  min-height: auto;
+}
+
+body.in-modal .hero {
+  padding: 24px 24px 16px;
+}
+
+body.in-modal .hero h1 {
+  font-size: 2rem;
+}
+
+body.in-modal .hero p {
+  font-size: 0.9rem;
+}
+
+body.in-modal .cards {
+  grid-template-columns: repeat(3, 1fr); /* ← was 1fr, now 3 columns */
+  padding: 0 16px;
+  gap: 20px;
+  max-width: 100%;
+}
+
+body.in-modal .role-card {
+  padding: 28px 16px;
+}
+
+body.in-modal .icon-box {
+  width: 72px;
+  height: 72px;
+  margin-bottom: 14px;
+}
+
+body.in-modal .icon-box i {
+  font-size: 28px;
+}
+
+body.in-modal .role-card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+body.in-modal .role-card p {
+  font-size: 0.85rem;
+  margin-bottom: 18px;
+  min-height: auto;
+}
+
+body.in-modal .select-btn {
+  padding: 11px 20px;
+  font-size: 0.85rem;
+  width: 100%;
 }

@@ -21,8 +21,13 @@
         />
       </div>
       <div class="nav-actions">
-        <a href="../auth/login/login.html" class="btn-white">Sign In</a>
-        <a href="../auth/who-are-you/who.html" class="btn-black">Sign Up</a>
+        <button data-modal="signIn" id="login" class="btn-white">
+          Sign In
+        </button>
+        <button data-modal="signUp" id="register" class="btn-black">
+          Sign Up
+        </button>
+        <button id="logout" class="btn-black">Logout</button>
       </div>
     </nav>
 
@@ -327,5 +332,88 @@
     </footer>
 
     <script src="./home.js"></script>
+
+    <!-- ── MODALS ── -->
+    <div id="signInModal" class="modal-overlay">
+      <div class="modal-box">
+        <button class="modal-close" data-close="signInModal">✕</button>
+        <iframe
+          src="../auth/login/login.html"
+          class="iframe-signin"
+          frameborder="0"
+        ></iframe>
+      </div>
+    </div>
+
+    <div id="signUpModal" class="modal-overlay">
+      <div class="modal-box who-modal">
+        <!-- ← add who-modal here -->
+        <button class="modal-close" data-close="signUpModal">✕</button>
+        <iframe
+          src="../auth/who-are-you/who.html"
+          class="iframe-who"
+          frameborder="0"
+        ></iframe>
+      </div>
+    </div>
+
+    <div id="forgotModal" class="modal-overlay">
+      <div class="modal-box forgot-modal">
+        <button class="modal-close" data-close="forgotModal">✕</button>
+        <iframe
+          src="../auth/forget-password/forgot-password.html"
+          class="iframe-forgot"
+          frameborder="0"
+        ></iframe>
+      </div>
+    </div>
+
+    <div id="userRegisterModal" class="modal-overlay">
+      <div class="modal-box">
+        <button class="modal-close" data-close="userRegisterModal">✕</button>
+        <iframe
+          src="../auth/register/user-register/user-register.html"
+          class="iframe-user"
+          frameborder="0"
+        ></iframe>
+      </div>
+    </div>
+
+    <div id="vendorRegisterModal" class="modal-overlay">
+      <div class="modal-box">
+        <button class="modal-close" data-close="vendorRegisterModal">✕</button>
+        <iframe
+          src="../auth/register/vendor-register/vendor-register.html"
+          class="iframe-vendor"
+          frameborder="0"
+        ></iframe>
+      </div>
+    </div>
+
+    <div id="driverRegisterModal" class="modal-overlay">
+      <div class="modal-box">
+        <button class="modal-close" data-close="driverRegisterModal">✕</button>
+        <iframe
+          src="../auth/register/driver-register/driver-register.html"
+          class="iframe-driver"
+          frameborder="0"
+        ></iframe>
+      </div>
+    </div>
+
+    <div id="otpModal" class="modal-overlay">
+      <div class="modal-box">
+        <button class="modal-close" data-close="otpModal">✕</button>
+        <iframe
+          src="../auth/verify-otp-login/verify-otp-login.html"
+          class="iframe-otp"
+          frameborder="0"
+        ></iframe>
+      </div>
+    </div>
+
+    <!-- shared modal system -->
+    <link rel="stylesheet" href="../auth/modal/modal.css" />
+    <script src="../auth/modal/modal.js"></script>
   </body>
 </html>

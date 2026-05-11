@@ -140,10 +140,11 @@ body {
   justify-content: center;
 }
 .hero-burger-img {
-  height: 180px;
+  /* height: 180px; */
+  width: 100%;
   object-fit: contain;
   filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.18));
-  transform: rotate(-6deg);
+  /* transform: rotate(-6deg); */
 }
 .hero-brand-tag {
   position: absolute;
