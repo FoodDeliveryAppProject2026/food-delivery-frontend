@@ -1,3 +1,7 @@
+if (window.self !== window.top) {
+  document.body.classList.add("in-modal");
+}
+
 // Form
 const forgotPassForm = document.getElementById("forgotPasswordForm");
 
@@ -99,4 +103,11 @@ forgotPassForm.addEventListener("submit", async (e) => {
   } finally {
     setLoading(false);
   }
+});
+
+// "← Back to Sign In" link
+document.querySelector(".signup-link").addEventListener("click", (e) => {
+  e.preventDefault();
+  window.parent.postMessage({ closeModal: "forgotModal" }, "*");
+  window.parent.postMessage({ openModal: "signInModal" }, "*");
 });

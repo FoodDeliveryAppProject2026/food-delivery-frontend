@@ -118,3 +118,21 @@ loginForm.addEventListener("submit", async (e) => {
     setLoading(false);
   }
 });
+
+// "Forget Password" link
+document.querySelector(".forgot-link").addEventListener("click", (e) => {
+  e.preventDefault();
+  window.parent.postMessage({ closeModal: "signInModal" }, "*");
+  window.parent.postMessage({ openModal: "forgotModal" }, "*");
+});
+
+// "New To Hot Meal? Sign Up →" link
+document.querySelector(".signup-link").addEventListener("click", (e) => {
+  e.preventDefault();
+  window.parent.postMessage({ closeModal: "signInModal" }, "*");
+  window.parent.postMessage({ openModal: "signUpModal" }, "*");
+});
+
+if (window.self !== window.top) {
+  document.body.classList.add("in-modal");
+}

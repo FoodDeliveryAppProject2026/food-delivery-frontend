@@ -1,3 +1,7 @@
+if (window.self !== window.top) {
+  document.body.classList.add("in-modal");
+}
+
 // Form
 const registerForm = document.getElementById("registerForm");
 
@@ -362,11 +366,23 @@ registerForm.addEventListener("submit", async (e) => {
     localStorage.setItem("pending_business_type", businessType);
     localStorage.setItem("pending_cuisine_type", cuisineType);
 
-    window.location.href = "../../verify-otp/verify-otp.html";
+    if (window.self !== window.top) {
+      window.parent.postMessage({ closeModal: "vendorRegisterModal" },  "*");
+      window.parent.postMessage({ openModal: "otpModal" }, "*");
+    } else {
+     window.location.href = "../../verify-otp/verify-otp.html";
+    }
 
   } catch (err) {
     showFieldError("email", "Something went wrong. Please try again.");
   } finally {
     setLoading(false);
   }
+});
+
+// "Already have an account? Sign in →"
+document.querySelector(".signup-link").addEventListener("click", (e) => {
+  e.preventDefault();
+  window.parent.postMessage({ closeModal: "vendorRegisterModal" }, "*");
+  window.parent.postMessage({ openModal: "signInModal" }, "*");
 });

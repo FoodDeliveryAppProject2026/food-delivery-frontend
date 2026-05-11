@@ -1,0 +1,86 @@
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal-box {
+  position: relative;
+  background: #fef3e2;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 500px;
+  overflow: hidden;
+  animation: modalFadeUp 0.25s ease;
+}
+
+.modal-box iframe {
+  width: 100%;
+  border: none;
+  display: block;
+}
+.iframe-signin {
+  height: 560px;
+}
+.iframe-forgot {
+  height: 380px;
+}
+
+.modal-box.forgot-modal {
+  max-width: 480px;
+}
+.modal-box.who-modal {
+  max-width: 960px; /* wider */
+}
+
+.iframe-who {
+  height: 440px; /* taller */
+  width: 100%;
+}
+.iframe-user {
+  height: 750px;
+}
+.iframe-vendor {
+  height: 750px;
+}
+.iframe-driver {
+  height: 750px;
+}
+.iframe-otp {
+  height: 440px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: #888;
+  z-index: 10;
+  transition: color 0.2s;
+}
+.modal-close:hover {
+  color: #111;
+}
+
+@keyframes modalFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

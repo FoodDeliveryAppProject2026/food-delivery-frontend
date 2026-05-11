@@ -3,15 +3,25 @@ const register = document.getElementById("register");
 const logout = document.getElementById("logout");
 const token = localStorage.getItem("token");
 
-if (token) {
-  login.classList.add("hide");
-  register.classList.add("hide");
-  logout.classList.add("show");
-} else {
-  login.classList.add("show");
-  register.classList.add("show");
-  logout.classList.add("hide");
+function updateNavAuth() {
+  const token = localStorage.getItem("token");
+  if (token) {
+    login.classList.add("hide");
+    register.classList.add("hide");
+    logout.classList.remove("hide");
+  } else {
+    login.classList.remove("hide");
+    register.classList.remove("hide");
+    logout.classList.add("hide");
+  }
 }
+
+logout.addEventListener("click", () => {
+  localStorage.removeItem("token");
+  updateNavAuth();
+});
+
+updateNavAuth();
 
 const reviewsData = [
   {
