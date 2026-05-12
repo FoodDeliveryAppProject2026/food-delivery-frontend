@@ -8,7 +8,7 @@
       href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Patua+One&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./new-password.css" />
+    <link rel="stylesheet" href="./verify-otp-login.css" />
   </head>
   <body>
     <script src="../../../config.js"></script>
@@ -23,41 +23,30 @@
     </nav>
     <main class="main">
       <div class="forgotPass-main">
-        <h1 class="page-title">Reset Password</h1>
+        <h1 class="page-title">Verify-OTP</h1>
 
         <form id="forgotPasswordForm" novalidate>
-          <!-- Password field -->
+          <!-- Email field -->
           <div class="field-group">
-            <div class="pass-input">
-              <input
-                type="password"
-                id="password"
-                class="input-field"
-                placeholder="Enter password"
-                autocomplete="current-password"
-                required
-              />
-              <!-- <button
-                type="button"
-                class="eye-toggle"
-                id="eyeToggle"
-                title="Show/hide password"
-              >
-                <img src="../../../images/show.png" alt="show" />
-                <img src="../../../images/hide.png" alt="hide" />
-              </button> -->
-            </div>
-            <p class="field-error" id="passwordError"></p>
+            <input
+              type="email"
+              id="email"
+              class="input-field"
+              placeholder="Enter your code"
+              autocomplete="email"
+              required
+            />
+            <p class="field-error" id="emailError"></p>
           </div>
 
           <!-- reset password -->
           <button type="submit" class="btn-continue" id="continueBtn">
-            <span class="btn-label" id="btnLabel">Reset my Password</span>
+            <span class="btn-label" id="btnLabel">Submit</span>
             <span class="btn-spinner" id="btnSpinner"></span>
           </button>
         </form>
       </div>
     </main>
-    <script src="./new-password.js"></script>
+    <script src="./verify-otp-login.js"></script>
   </body>
 </html>
